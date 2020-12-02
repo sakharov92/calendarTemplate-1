@@ -1,16 +1,14 @@
 const chosenMonth = document.querySelector(".chosenMonth");
 const outputCalendar = document.querySelector(".outputCalendar");
-const formatter = new Intl.DateTimeFormat("en", {
+const dateFormatter = new Intl.DateTimeFormat("en", {
   month: "long",
   weekday: "short",
   day: "numeric",
 });
 let currentDate = new Date();
-let outputCalendarHTML = ``;
 
 function fillOutputCalendar(dateObj) {
-  outputCalendarHTML = ``;
-  let isWeekend = false;
+  let outputCalendarHTML = ``;
   let daysInCurrentMonth = new Date(
     dateObj.getFullYear(),
     dateObj.getMonth() + 1,
@@ -18,13 +16,11 @@ function fillOutputCalendar(dateObj) {
   ).getDate();
   for (let i = 1; i <= daysInCurrentMonth; i++) {
     let chosenDate = new Date(dateObj.getFullYear(), dateObj.getMonth(), i);
-    const [dayName, , date] = formatter
+    const [dayName, , date] = dateFormatter
       .format(chosenDate)
       .replace(",", "")
       .split(" ");
-    dayName === "Sat" || dayName === "Sun"
-      ? (isWeekend = true)
-      : (isWeekend = false);
+    let isWeekend = dayName === "Sat" || dayName === "Sun";
     outputCalendarHTML += `<td class="outputItem ${isWeekend ? "weekend" : ""}">
         <span class="outputDay">${dayName.slice(0, -1)}</span> 
         <span class="outputDate">${date}</span>
@@ -33,8 +29,18 @@ function fillOutputCalendar(dateObj) {
   outputCalendar.innerHTML = outputCalendarHTML;
 }
 
-chosenMonth.innerHTML = formatter
+chosenMonth.innerHTML = dateFormatter
   .format(new Date(currentDate))
   .replace(",", "")
   .split(" ")[1];
 fillOutputCalendar(currentDate);
+
+/*
+const departmentTeams = [
+  {
+    name: "Frontend Team",
+    percentageOfAbsent: 0,
+    members: [{ name: "FE_Team_User1" }],
+  },
+];
+*/
