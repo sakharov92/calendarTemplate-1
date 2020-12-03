@@ -56,3 +56,73 @@ body {
 .weekend {
   background: #f0f0f0;
 }
+
+/* ########## BUTTONS ########## */
+
+.chosenMonths {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 228px;
+  margin: 30px auto;
+}
+
+.chosenMonths__button {
+  display: block;
+  background: none;
+  border: none;
+}
+
+.chosenMonths__button:hover,
+.chosenMonths__button:focus {
+  color: #48BA46;
+  cursor: pointer;
+  outline: none;
+}
+
+.chosenMonth {
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #000000;
+}
+
+/* ################################# */
+
+.cell {
+  display: block;
+  width: 262px;
+  height: 62px;
+  margin-top: 100px;
+}
+
+.addVacation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 144px;
+  height: 40px;
+  background-color: #48BA46;
+  color: #ffffff;
+  border: 1px solid #48BA46;
+  border-radius: 7px;
+  font-family: "Open Sans", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.addVacation:hover,
+.addVacation:focus {
+  color: #48BA46;
+  background-color: #ffffff;
+  cursor: pointer;
+  outline: none;
+}
+
+.addVacation .plus {
+  margin-right: 10px;
+}
