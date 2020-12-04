@@ -1,8 +1,11 @@
-import { dateFormatter } from "./utils";
+import { dateFormatter, hideTable, departmentTeams } from "./utils";
+import { renderTeamsTemplate } from "./renderTeamsTemplate";
+
 
 export function renderCalendar(currentDate) {
+
   const outputCalendar = document.querySelector(".outputCalendar");
-  let outputCalendarHTML = ``;
+  let outputCalendarHTML = `<td class="addVacationCell outputItem "><button class="addVacationBtn"><span>+</span>Add Vacation</button></td>`;
   let daysInCurrentMonth = new Date(
     currentDate.getFullYear(),
     currentDate.getMonth() + 1,
@@ -13,7 +16,7 @@ export function renderCalendar(currentDate) {
   chosenMonth.innerHTML = dateFormatter
     .format(new Date(currentDate))
     .replace(",", "")
-    .split(" ")[1];
+    .split(" ")[1] + " " + currentDate.getFullYear();
 
   for (let i = 1; i <= daysInCurrentMonth; i++) {
     let chosenDate = new Date(
@@ -31,5 +34,17 @@ export function renderCalendar(currentDate) {
         <span class="outputDate">${date}</span>
         </td>`;
   }
+  outputCalendarHTML += `<td class="sumCell outputItem weekend">Sum</td>`
   outputCalendar.innerHTML = outputCalendarHTML;
+
+
+  renderTeamsTemplate(departmentTeams, daysInCurrentMonth, currentDate)
+
+
+
+  document.querySelectorAll(".chevronBtn").forEach(e => {
+    e.addEventListener("click", hideTable);
+  })
 }
+
+
