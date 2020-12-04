@@ -1,8 +1,8 @@
-export function hideTable(e) {
+export function hideTable({ target }) {
 
-    let target = e.target;
     let classList = target.classList;
     let tableBodyDataClassList = target.closest(".tableBody").nextSibling.classList;
+    
     if (classList.contains("fa-chevron-up")) {
         classList.remove("fa-chevron-up");
         classList.add("fa-chevron-down");
