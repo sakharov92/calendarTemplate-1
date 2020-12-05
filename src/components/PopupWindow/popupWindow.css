@@ -1,0 +1,21 @@
+.popup__substrate{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.65);
+    z-index: 5;
+}
+
+.popup__window{
+    max-width: 393px;
+    width: 100%;
+    min-height: 373px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    position: relative;
+    top: calc(50% - 373px /2);
+}

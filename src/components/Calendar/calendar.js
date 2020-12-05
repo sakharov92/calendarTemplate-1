@@ -1,8 +1,8 @@
 import { Component } from "..";
 import { Navigation } from "./navigation";
 import { Table } from "./table";
-
-
+import { PopupWindow } from "../PopupWindow";
+import { VacationForm } from "../VacationForm";
 
 
 export class Calendar extends Component {
@@ -12,11 +12,15 @@ export class Calendar extends Component {
     this.component.classList.add("calendar");
     this.table = new Table(this.component, this.currentDate);
     this.nav = new Navigation(this.component, this.currentDate, this.table);
+    this.popup = new PopupWindow(this.component);
+    this.vacationForm = new VacationForm(this.component);
   }
   render() {
     super.render();
     this.nav.render();
     this.table.render();
+    this.popup.render();
+    this.vacationForm.render();
   }
 
 
