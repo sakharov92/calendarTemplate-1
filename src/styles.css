@@ -17,42 +17,234 @@ body {
 }
 
 .chosenMonth {
-  font-size: 32px;
-  margin-bottom: 5vh;
-  margin-top: 5vh;
-}
-
-.outputCalendar {
-  display: flex;
+  font-size: 14px;
+  line-height: 21px;
+  margin-bottom: 25px;
+  margin-top: 35px;
+  padding: 0 50px;
 }
 
 .outputDay {
-  border-bottom: none;
-  border-left: none;
   padding: 5px;
   text-align: center;
-  color: rgb(33, 33, 33);
+  color: #000;
   font-size: 12px;
+  line-height: 18px;
 }
 
 .outputDate {
   text-align: center;
-  color: rgb(56, 56, 56);
+  color: #000;
   font-size: 14;
+  font-weight: 600;
+  line-height: 21px;
 }
 
 .outputItem {
-  display: flex;
+  height: 64px;
+  width: 34px;
+  text-align: center;
   flex-direction: column;
   align-items: center;
-  max-width: 34px;
-  padding: 8px 6px;
+  line-height: 28px;
   border: 1px solid rgb(192, 192, 192);
-}
-.outputItem:not(:first-of-type) {
-  border-left: none;
 }
 
 .weekend {
-  background: #f0f0f0;
+  background: #F0F0F0;
+}
+
+.monthBlock {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.fas {
+  font-size: 12px;
+  margin-top: 10px;
+  ;
+}
+
+.addVacationCell {
+  max-width: fit-content;
+  padding: 0 119px 24px 0;
+  margin: 0;
+  border-top: none;
+  border-left: none;
+}
+
+.addVacationBtn {
+  width: 144px;
+  height: 40px;
+  background: #48BA46;
+  border-radius: 7px;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  line-height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addVacationBtn span {
+  font-size: 24px;
+  padding-right: 10px;
+}
+
+.sumCell {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+table {
+  border-collapse: collapse;
+  ;
+}
+
+td {
+  border: 1px solid #D7D7D7;
+}
+
+.dayCell {
+  text-align: center;
+}
+
+.mainRow::last-child {
+  background: #F3F3F3;
+}
+
+.dayCellOfMainRow {
+  background: rgba(155, 153, 255, 0.1);
+}
+
+tbody tr {
+  height: 33px;
+}
+
+.frontend tr {
+  border-left: 3px solid #9B99FF;
+}
+
+.designers tr {
+  border-left: 3px solid #7AAFFF;
+}
+
+.backend tr {
+  border-left: 3px solid #FF9999;
+}
+
+.managers tr {
+  border-left: 3px solid #FFA768;
+}
+
+.frontend .mainRow td {
+  background: rgba(155, 153, 255, 0.1);
+}
+
+.designers .mainRow td {
+  background: rgba(122, 175, 255, 0.1);
+}
+
+.backend .mainRow td {
+  background: rgba(255, 153, 153, 0.1);
+}
+
+.managers .mainRow td {
+  background: rgba(255, 167, 104, 0.1);
+}
+
+.frontend .percent {
+  background: #9B99FF;
+}
+
+.designers .percent {
+  background: #7AAFFF;
+}
+
+.backend .percent {
+  background: #FF9999;
+}
+
+.managers .percent {
+  background: #FFA768;
+}
+
+.nameCell {
+  padding: 9px 12px 7px;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.teamInfo {
+  padding: 9px 12px 7px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 17px;
+  background: rgba(155, 153, 255, 0.1);
+}
+
+td.sumOfDaysOff {
+  text-align: center;
+  font-size: 14px;
+  line-height: 21px;
+  background: #F3F3F3;
+}
+
+.fa-users {
+  font-size: 12px;
+  margin-left: 45px;
+  margin-right: 5px;
+  color: #949494;
+}
+
+.teamInfo span {
+  color: #949494;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.percent {
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 18px;
+  color: #fff;
+  border-radius: 2px;
+  display: inline-block;
+  min-width: 24px;
+  margin-left: 13px;
+  margin-right: 18px;
+}
+
+.chevronBtn {
+  font-size: 10px;
+}
+
+.hideTable {
+  height: 0px;
+  display: block;
+  overflow: hidden;
+}
+
+.infoWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navBtn {
+  padding: 0 10px 5px 10px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.navBtn:hover {
+  cursor: pointer;
+}
+
+.monthBlock {
+  max-width: fit-content;
+  margin: 0 auto;
 }
