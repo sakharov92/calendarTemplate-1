@@ -7,7 +7,6 @@ export class Component {
     }
     this.component = document.createElement(tagName);
   }
-
   render() {
     this.parent.append(this.component);
     return this.component;
