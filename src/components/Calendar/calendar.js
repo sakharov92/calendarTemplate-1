@@ -22,7 +22,7 @@ export class Calendar extends Component {
     this.nav.render();
     this.table.render();
     this.popup.render();
-    this.popupForm.render()
+    if(!this.popup.state.loading && !this.popup.state.error){ this.popupForm.render()}
 
   }
 

@@ -9,10 +9,10 @@ export class PopupWindow extends Component{
         this.popupSubstrate = this.component;
         this.popupSubstrate.classList.add("popup__substrate");
         this.popupSubstrate.addEventListener('click', this.hide.bind(this));
-        // this.state = {
-        //     error: false,
-        //     loading: false
-        // }
+        this.state = {
+            error: false,
+            loading: false
+        }
     }
 
 
