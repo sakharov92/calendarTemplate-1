@@ -30,11 +30,11 @@ export class PopupWindow extends Component{
                     <div class="form__inputs-group">
                         <div class="form__input-wrapper">
                             <label for=".form__input-from">From</label>
-                            <input class="form__input-from form__input" type="date" placeholder="15.06.2020">
+                            <input class="form__input-from form__input" type="date">
                         </div>
                         <div class="form__input-wrapper">
                             <label for=".form__input-to">To</label>
-                            <input class="form__input-to form__input" type="date" placeholder="18.06.2020">
+                            <input class="form__input-to form__input" type="date">
                         </div>
                         <div class="form__select-wrapper">
                             <div class="form__dates-subtitle">
@@ -58,9 +58,9 @@ export class PopupWindow extends Component{
 
     hide(e){
       const target = e.target;
-      e.preventDefault()
       if (target && target.matches(".popup__substrate") || target.matches(".form__cancel-btn")
           || target.matches(".form__send-btn")  ){
+            e.preventDefault()
             this.popupSubstrate.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
