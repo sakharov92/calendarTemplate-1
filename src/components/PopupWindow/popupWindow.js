@@ -4,7 +4,6 @@ import {
 import "./popupWindow.css";
 
 
-
 export class PopupWindow extends Component {
     constructor(parentSelector) {
         super(parentSelector);
@@ -38,7 +37,6 @@ export class PopupWindow extends Component {
         this.state.error = error;
         this.state.loading = loading;
     }
-
 
     render() {
         super.render();

@@ -25,6 +25,9 @@ export class Calendar extends Component {
     this.popupForm = new VacationForm(this.popup.component);
     this.table = new Table(this.component, this.currentDate, this.popupForm);
     this.nav = new Navigation(this.component, this.currentDate, this.table);
+
+
+
   }
   render() {
     super.render();

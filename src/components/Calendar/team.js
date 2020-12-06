@@ -1,6 +1,8 @@
-import { Component } from "..";
-import { TeamHeader } from "./teamHeader";
-import { TeamItem } from "./teamItem";
+import {
+    Component
+} from "..";
+// import { TeamHeader } from "./teamHeader";
+// import { TeamItem } from "./teamItem";
 
 
 export class Team extends Component {
@@ -17,7 +19,7 @@ export class Team extends Component {
         this.teamHeaderContext.render();
         let members = this.teamData.members;
         let teamName = this.teamData.name.split(" ")[0].toLowerCase();
-        for (let member of members){
+        for (let member of members) {
             let item = new TeamItem(this.component, member, teamName, this.daysInCurrentMonth, this.date);
             this.arrayTeamItemsContext.push(item);
             item.render();
@@ -29,7 +31,7 @@ export class Team extends Component {
         this.arrayTeamItemsContext.forEach(e => e.updateTeamItem(newDate))
     }
     render() {
-        this.generateTeam()
+        // this.generateTeam()
         super.render();
     }
 }

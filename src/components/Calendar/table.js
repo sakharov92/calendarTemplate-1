@@ -7,6 +7,9 @@ import {
 import {
     departmentTeams
 } from "../../index";
+import {
+    Team
+} from "./team";
 
 export class Table extends Component {
     constructor(parentSelector, date, popupWindowContext) {
@@ -44,7 +47,7 @@ export class Table extends Component {
         outputCalendar.innerHTML = outputCalendarHTML;
         const addVacationBtn = this.component.querySelector(".addVacationBtn");
         addVacationBtn.addEventListener("click", this.popupWindowContext.show.bind(this.popupWindowContext))
-     
+
 
     }
 
@@ -92,11 +95,11 @@ export class Table extends Component {
         this.teamsContext.forEach(e => e.teamUpdate(newDate));
     }
     render() {
-        // for (let i = 0; i < departmentTeams.teams.length; i++) {
-        //     let team = new Team(this.component, departmentTeams.teams[i], this.daysInCurrentMonth, this.date);
-        //     this.teamsContext.push(team);
-        //     team.render();
-        // }
+        for (let i = 0; i < departmentTeams.teams.length; i++) {
+            let team = new Team(this.component, departmentTeams.teams[i], this.daysInCurrentMonth, this.date);
+            this.teamsContext.push(team);
+            team.render();
+        }
         this.generateTableHead();
         super.render();
     }
