@@ -1,9 +1,11 @@
-import  { Component } from "../component";
+import {
+    Component
+} from "../component";
 import "./popupWindow.css";
 
 
 
-export class PopupWindow extends Component{
+export class PopupWindow extends Component {
     constructor(parentSelector) {
         super(parentSelector);
         this.popupSubstrate = this.component;
@@ -16,29 +18,29 @@ export class PopupWindow extends Component{
     }
 
 
-    hide(e){
-      const target = e.target
-      if (target && target.matches(".popup__substrate") || target.matches(".form__cancel-btn")
-          || target.matches(".form__send-btn") ){
-          e.preventDefault()
+    hide(e) {
+        const target = e.target
+        if (target && target.matches(".popup__substrate") || target.matches(".form__cancel-btn") ||
+            target.matches(".form__send-btn")) {
+            e.preventDefault()
             this.popupSubstrate.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
     }
 
-    show(){
-        this.popupSubstrate.style.display = 'block';
+    show() {
+        this.parent.style.display = 'flex';
+        this.popupSubstrate.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
 
-     chengeState(error = false, loading = false){
+    chengeState(error = false, loading = false) {
         this.state.error = error;
-         this.state.loading = loading;
-     }
+        this.state.loading = loading;
+    }
 
 
     render() {
         super.render();
-        this.show(); // удалить
     }
 }

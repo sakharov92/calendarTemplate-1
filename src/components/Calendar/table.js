@@ -1,10 +1,17 @@
-import { Component } from "..";
-import { dateFormatter } from "../../utils"
-import { departmentTeams } from "../../index";
+import {
+    Component
+} from "..";
+import {
+    dateFormatter
+} from "../../utils"
+import {
+    departmentTeams
+} from "../../index";
 
 export class Table extends Component {
-    constructor(parentSelector, date) {
+    constructor(parentSelector, date, popupWindowContext) {
         super(parentSelector, "table");
+        this.popupWindowContext = popupWindowContext;
         this.teamsContext = [];
         this.date = date;
         this.component.innerHTML = `<thead><tr class="outputCalendar"></tr></thead>`;
@@ -35,6 +42,10 @@ export class Table extends Component {
         }
         outputCalendarHTML += `<td class="sumCell outputItem weekend">Sum</td>`
         outputCalendar.innerHTML = outputCalendarHTML;
+        const addVacationBtn = this.component.querySelector(".addVacationBtn");
+        addVacationBtn.addEventListener("click", this.popupWindowContext.show.bind(this.popupWindowContext))
+     
+
     }
 
     updateTableHead(newDate) {
@@ -76,7 +87,7 @@ export class Table extends Component {
                 .split(" ");
             let isWeekend = dayName === "Sat" || dayName === "Sun";
             daysList[i - 1].querySelector(".outputDay").textContent = dayName.slice(0, -1);
-            (isWeekend) ? daysList[i - 1].classList.add("weekend") : daysList[i - 1].classList.remove("weekend");
+            (isWeekend) ? daysList[i - 1].classList.add("weekend"): daysList[i - 1].classList.remove("weekend");
         }
         this.teamsContext.forEach(e => e.teamUpdate(newDate));
     }
