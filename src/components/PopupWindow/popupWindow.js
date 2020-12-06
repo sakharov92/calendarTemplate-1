@@ -72,7 +72,6 @@ export class PopupWindow extends Component{
     }
 
 
-
     render() {
         super.render();
         this.show(); // после того как привяжешь удали это вызов. это был тест
