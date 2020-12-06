@@ -9,6 +9,11 @@ export class PopupWindow extends Component{
         this.popupSubstrate.classList.add("popup__substrate");
         this.popup = this.popupSubstrate.appendChild(document.createElement('div'));
         this.popup.classList.add("popup__window");
+        this.popupSubstrate.addEventListener('click', this.hide.bind(this));
+        // this.state = {
+        //     error: false,
+        //     loading: false
+        // }
         this.popup.innerHTML = `
             <form class="form">
                 <div class="form__header">
@@ -48,11 +53,6 @@ export class PopupWindow extends Component{
                 </div>
             </form>
         `;
-        this.popupSubstrate.addEventListener('click', this.hide.bind(this));
-        // this.state = {
-        //     error: false,
-        //     loading: false
-        // }
     }
 
 
