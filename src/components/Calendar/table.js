@@ -47,10 +47,7 @@ export class Table extends Component {
         outputCalendar.innerHTML = outputCalendarHTML;
         const addVacationBtn = this.component.querySelector(".addVacationBtn");
         addVacationBtn.addEventListener("click", this.popupWindowContext.show.bind(this.popupWindowContext))
-
-
     }
-
     updateTableHead(newDate) {
         let daysInPrevMonth = this.daysInCurrentMonth;
         this.daysInCurrentMonth = new Date(
@@ -92,7 +89,6 @@ export class Table extends Component {
             daysList[i - 1].querySelector(".outputDay").textContent = dayName.slice(0, -1);
             (isWeekend) ? daysList[i - 1].classList.add("weekend") : daysList[i - 1].classList.remove("weekend");
         }
-        console.log(this.teamsContext)
         this.teamsContext.forEach(e => e.updateTeam(newDate));
     }
     render() {
