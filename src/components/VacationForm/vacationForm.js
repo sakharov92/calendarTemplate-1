@@ -7,12 +7,17 @@ export class VacationForm extends PopupWindow {
         super(parentSelector);
         this.element = this.component;
         this.element.classList.add("form__container");
+    }
+
+
+
+    generateElement () {
         this.element.innerHTML = `
             <form class="form">
                 <div class="form__header">
                     <h3 class="form__title">Vacation Request</h3>
                     <div class="form__days-counter">
-                        <p class="form__days-amount">8</p>
+<!--                        <p class="form__days-amount">8</p>-->
                         <p class="form__days-text">days</p>
                     </div>
                 </div>
@@ -46,13 +51,16 @@ export class VacationForm extends PopupWindow {
                 </div>
             </form>
         `;
+
+        this.daysAmount = document.createElement('p');
+        this.daysAmount.classList.add("form__days-amount");
+        this.daysCounter = this.element.querySelector(".form__days-counter");
+        this.daysAmount.textContent = '8';
+        this.daysCounter.prepend(this.daysAmount);
     }
 
-
-
-
-
     render() {
+        this.generateElement();
         super.render();
     }
 }

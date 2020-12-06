@@ -31,9 +31,13 @@ export class PopupWindow extends Component{
         document.body.style.overflow = 'hidden';
     }
 
+    // chengeState(error, loading){
+    //
+    // }
 
 
     render() {
         super.render();
+        this.show(); // удалить
     }
 }
