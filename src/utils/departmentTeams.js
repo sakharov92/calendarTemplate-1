@@ -1,5 +1,3 @@
-import { Calendar } from "./components";
-
 export const departmentTeams = {
   teams: [
     {
@@ -27,14 +25,14 @@ export const departmentTeams = {
       percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
       members: [
         {
-          name: "BE_Team_User1",
+          name: "FE_Team_User1",
           vacations: [
             { startDate: "15.02.2020", endDate: "22.02.2020", type: "UnPaid" },
             { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
           ],
         },
         {
-          name: "BE_Team_User1",
+          name: "FE_Team_User1",
           vacations: [
             { startDate: "20.02.2020", endDate: "22.02.2020", type: "UnPaid" },
             { startDate: "20.03.2020", endDate: "22.03.2020", type: "UnPaid" },
@@ -44,19 +42,3 @@ export const departmentTeams = {
     },
   ],
 };
-
-const calendar = new Calendar("#app");
-calendar.render();
-// window.calendar = calendar;
-
-// setTimeout(() => calendar.render(), 4000);
-
-// fetch("https://jsonplaceholder.typicode.com/posts/1", {
-//   method: "PUT",
-//   body: JSON.stringify(departmentTeams),
-//   headers: {
-//     "Content-type": "application/json; charset=UTF-8",
-//   },
-// })
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));

@@ -15,7 +15,6 @@ import {
 } from "../VacationForm";
 
 
-
 export class Calendar extends Component {
   constructor(parentSelector) {
     super(parentSelector);
@@ -39,20 +38,4 @@ export class Calendar extends Component {
     }
 
   }
-
-
-
-
-  // createCurrentLabel() {
-  //   this.component.prepend(this.label.component);
-  //   this.updateCurrentLabel(this.currentDate);
-  // }
-
-  // updateCurrentLabel(date) {
-  //   const { component: label } = this.label;
-  //   label.textContent = dateFormatter
-  //     .format(new Date(date))
-  //     .replace(",", "")
-  //     .split(" ")[1];
-  // }
 }
