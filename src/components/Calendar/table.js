@@ -90,9 +90,10 @@ export class Table extends Component {
                 .split(" ");
             let isWeekend = dayName === "Sat" || dayName === "Sun";
             daysList[i - 1].querySelector(".outputDay").textContent = dayName.slice(0, -1);
-            (isWeekend) ? daysList[i - 1].classList.add("weekend"): daysList[i - 1].classList.remove("weekend");
+            (isWeekend) ? daysList[i - 1].classList.add("weekend") : daysList[i - 1].classList.remove("weekend");
         }
-        this.teamsContext.forEach(e => e.teamUpdate(newDate));
+        console.log(this.teamsContext)
+        this.teamsContext.forEach(e => e.updateTeam(newDate));
     }
     render() {
         for (let i = 0; i < departmentTeams.teams.length; i++) {
