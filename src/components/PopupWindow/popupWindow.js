@@ -17,10 +17,10 @@ export class PopupWindow extends Component{
 
 
     hide(e){
-      const target = e.target;
-      e.preventDefault()
+      const target = e.target
       if (target && target.matches(".popup__substrate") || target.matches(".form__cancel-btn")
           || target.matches(".form__send-btn") ){
+          e.preventDefault()
             this.popupSubstrate.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
@@ -35,5 +35,6 @@ export class PopupWindow extends Component{
 
     render() {
         super.render();
+        this.show()
     }
 }
