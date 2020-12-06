@@ -35,6 +35,5 @@ export class PopupWindow extends Component{
 
     render() {
         super.render();
-        this.show();
     }
 }
