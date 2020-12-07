@@ -1,4 +1,4 @@
-import {
+ import {
   Component
 } from "..";
 import {
@@ -13,7 +13,7 @@ import {
 import {
   VacationForm
 } from "../VacationForm";
-
+import './EmployerRow/TeamItem.css';
 
 
 export class Calendar extends Component {
@@ -39,20 +39,4 @@ export class Calendar extends Component {
     }
 
   }
-
-
-
-
-  // createCurrentLabel() {
-  //   this.component.prepend(this.label.component);
-  //   this.updateCurrentLabel(this.currentDate);
-  // }
-
-  // updateCurrentLabel(date) {
-  //   const { component: label } = this.label;
-  //   label.textContent = dateFormatter
-  //     .format(new Date(date))
-  //     .replace(",", "")
-  //     .split(" ")[1];
-  // }
 }

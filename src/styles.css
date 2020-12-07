@@ -62,8 +62,6 @@ body {
 
 .fas {
   font-size: 12px;
-  margin-top: 10px;
-  ;
 }
 
 .addVacationCell {
@@ -121,6 +119,13 @@ td {
 
 tbody tr {
   height: 33px;
+}
+
+tbody:after {
+  content: "-";
+  display: block;
+  line-height: 41px;
+  color: transparent;
 }
 
 .frontend tr {
@@ -194,7 +199,6 @@ td.sumOfDaysOff {
 
 .fa-users {
   font-size: 12px;
-  margin-left: 45px;
   margin-right: 5px;
   color: #949494;
 }
@@ -219,6 +223,12 @@ td.sumOfDaysOff {
 
 .chevronBtn {
   font-size: 10px;
+  padding: 0 10px;
+  padding-top: 10px;
+}
+
+.chevronBtn {
+  cursor: pointer;
 }
 
 .hideTable {
@@ -247,4 +257,8 @@ td.sumOfDaysOff {
 .monthBlock {
   max-width: fit-content;
   margin: 0 auto;
+}
+
+.hiddenEmployees {
+  transform: rotateX(180deg);
 }

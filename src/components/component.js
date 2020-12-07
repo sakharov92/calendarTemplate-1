@@ -7,6 +7,12 @@ export class Component {
     }
     this.component = document.createElement(tagName);
   }
+  hide() {
+    this.component.style.display = "none";
+  }
+  show() {
+    this.component.style.display = "";
+  }
   render() {
     this.parent.append(this.component);
     return this.component;

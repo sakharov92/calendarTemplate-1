@@ -7,12 +7,14 @@ import "./vacationForm.css";
 export class VacationForm extends PopupWindow {
     constructor(parentSelector) {
         super(parentSelector);
-        this.component.classList.add("form__container");
+        this.formContainer = document.createElement(`div`);
+        this.formContainer.classList.add("form__container");
+        this.component.appendChild(this.formContainer);
     }
 
 
     generateElement() {
-        this.component.innerHTML = `
+        this.formContainer.innerHTML = `
             <form class="form">
                 <div class="form__header">
                     <h3 class="form__title">Vacation Request</h3>
