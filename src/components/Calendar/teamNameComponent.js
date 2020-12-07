@@ -6,7 +6,7 @@ export class TeamName extends Component {
     this.date = date;
     this.depTeamInfo = depTeamInfo;
     this.component.className = "teamInfo";
-    this.component.textContent = `<div class="infoWrapper">
+    this.component.innerHTML = `<div class="infoWrapper">
       <p>${this.depTeamInfo.name}</p>
       <div class="infoBlock"> 
         <i class="fas fa-users"></i>
