@@ -18,7 +18,9 @@ export class TeamRowComponent extends Component {
   generateTeamHeader() {
     const teamName = new TeamName(this.component, this.depTeamInfo, this.date);
     this.component.append(teamName.component);
-
+    const chevronButton = this.component.querySelector(".chevronBtn");
+    chevronButton.addEventListener("click", () => {});
+    
     for (let index = 0; index < 31; index++) {
       const teamCell = new TeamCell(
         this.component,
@@ -60,6 +62,12 @@ export class TeamRowComponent extends Component {
       }
     }
   }
+
+  // hideMembers(this.membersTable) {
+  //   this.membersTable.forEach(element => {
+  //     element.super.hide()
+  //   });
+  // }
 
   render() {
     this.generateTeamHeader();
