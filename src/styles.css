@@ -122,6 +122,13 @@ tbody tr {
   height: 33px;
 }
 
+tbody:after {
+  content: "-";
+  display: block;
+  line-height: 41px;
+  color: transparent;
+}
+
 .frontend tr {
   border-left: 3px solid #9B99FF;
 }
@@ -219,7 +226,8 @@ td.sumOfDaysOff {
   font-size: 10px;
   padding: 5px;
 }
-.chevronBtn{
+
+.chevronBtn {
   cursor: pointer;
 }
 
