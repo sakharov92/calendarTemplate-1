@@ -1,4 +1,4 @@
 export { Component } from "./component";
 export { Calendar } from "./Calendar";
-export { Teams } from "./teamRowComponent";
-export { TeamName } from "./teamNameComponent";
+export { PopupWindow } from './PopupWindow';
+export { VacationForm } from "./VacationForm";

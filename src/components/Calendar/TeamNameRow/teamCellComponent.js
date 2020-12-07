@@ -1,4 +1,4 @@
-import { Component } from "../component";
+import { Component } from "../../component";
 
 export class TeamCell extends Component {
   constructor(parentSelector, depTeamInfo, monthLength, date) {
@@ -8,7 +8,6 @@ export class TeamCell extends Component {
     this.depTeamInfo = depTeamInfo;
     this.component.className = "teamInfo";
   }
-
   render() {
     super.render();
   }
