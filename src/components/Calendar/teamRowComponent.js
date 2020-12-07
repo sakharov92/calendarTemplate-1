@@ -16,7 +16,6 @@ export class TeamRowComponent extends Component {
   }
 
   generateTeamHeader() {
-    // insert TeamName
     const teamName = new TeamName(this.component, this.depTeamInfo, this.date);
     this.component.append(teamName.component);
 
@@ -44,6 +43,12 @@ export class TeamRowComponent extends Component {
       newDate.getMonth() + 1,
       0,
     ).getDate();
+
+    const percentageOfAbsentData = this.daysContext[0].depTeamInfo
+      .percentageOfAbsent;
+    const percent = this.component.querySelector(".percent");
+    const currentMonth = newDate.getMonth();
+    percent.textContent = `${percentageOfAbsentData[currentMonth]} %`;
 
     if (this.monthLength < daysInPreviousMonth) {
       for (let index = this.monthLength; index < daysInPreviousMonth; index++) {
