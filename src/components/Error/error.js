@@ -1,18 +1,11 @@
-import {
-    PopupWindow
-} from "../PopupWindow";
-// import { Spinner } from "../Spinner";
-import "./vacationForm.css";
+import { PopupWindow } from "../PopupWindow";
+import "./error.css";
 
 
 export class VacationForm extends PopupWindow {
     constructor(parentSelector) {
         super(parentSelector);
-        // this.formContainer = document.createElement(`div`);
-        // this.formContainer.classList.add("form__container");
-        // this.component.appendChild(this.formContainer);
         this.component.classList.add("form__container");
-        this.component.classList.remove("popup__substrate");
     }
 
 
@@ -22,7 +15,6 @@ export class VacationForm extends PopupWindow {
                 <div class="form__header">
                     <h3 class="form__title">Vacation Request</h3>
                     <div class="form__days-counter">
-<!--                        <p class="form__days-amount">8</p>-->
                         <p class="form__days-text">days</p>
                     </div>
                 </div>
@@ -50,6 +42,20 @@ export class VacationForm extends PopupWindow {
                         </div>
                     </div>
                 </div>
+
+
+
+                
+                <div class="form__error">
+                    <img src="stop.png" width="150" height="150" alt="stop">
+                    <h3 class="form__stop">STOP!</h3>
+                    <p class="form__text">Something is wrong, try again!</p>
+                </div>
+
+
+
+
+
                 <div class="form__footer">
                     <button class="form__cancel-btn form__btn" type="submit">Cancel</button>
                     <button class="form__send-btn form__btn" type="submit">Send</button>
@@ -57,33 +63,7 @@ export class VacationForm extends PopupWindow {
             </form>
         `;
 
-        this.daysAmount = document.createElement('p');
-        this.daysAmount.classList.add("form__days-amount");
-        this.daysCounter = this.component.querySelector(".form__days-counter");
-        this.daysAmount.textContent = '8';
-        this.daysCounter.prepend(this.daysAmount);
-
-        // this.sendBtn = document.createElement("button");
-        // this.sendBtn.classList.add("form__send-btn form__btn"); 
-        // this.sendBtn.setAttribute("type","submit");
-        // this.sendBtn.textContent = 'Send';
-        
-        
-       
     }
-
-    // this.sendBtn = this.component.querySelector(".form__footer");
-    //     this.sendBtn.addEventListener('click', function(){
-    //         this.hide();
-    //         this.Spinner.
-    //     })
-
-    // hide(){
-    //     this.component.style.display = "none";     
-    // }
-
-
-    
 
     render() {
         this.generateElement();

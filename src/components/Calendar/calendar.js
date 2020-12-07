@@ -13,6 +13,7 @@ import {
 import {
   VacationForm
 } from "../VacationForm";
+import { Spinner } from "../Spinner";
 import './EmployerRow/TeamItem.css';
 
 
@@ -23,6 +24,7 @@ export class Calendar extends Component {
     this.component.classList.add("calendar");
     this.popup = new PopupWindow("#app");
     this.popupForm = new VacationForm(this.popup.component);
+    this.spinner = new Spinner(this.popup.component);
     this.table = new Table(this.component, this.currentDate, this.popupForm);
     this.nav = new Navigation(this.component, this.currentDate, this.table);
 
@@ -34,9 +36,10 @@ export class Calendar extends Component {
     this.nav.render();
     this.table.render();
     this.popup.render();
-    if (!this.popup.state.loading && !this.popup.state.error) {
-      this.popupForm.render()
-    }
+    this.popupForm.render()
+
+
+    // this.spinner.render();
 
   }
 }
