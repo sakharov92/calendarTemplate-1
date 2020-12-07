@@ -2,7 +2,7 @@ import {
     Component
 } from "..";
 import { TeamRowComponent } from "./teamRowComponent";
-// import { TeamItem } from "./teamItem";
+import { TeamItem } from "./EmployerRow/TeamItem";
 
 
 export class Team extends Component {
@@ -18,13 +18,13 @@ export class Team extends Component {
         this.teamHeaderContext = new TeamRowComponent(this.component, this.teamData, this.daysInCurrentMonth, this.date);
         this.teamHeaderContext.render();
         
-        // let members = this.teamData.members;
-        // let teamName = this.teamData.name.split(" ")[0].toLowerCase();
-        // for (let member of members) {
-        //     let item = new TeamItem(this.component, member, teamName, this.daysInCurrentMonth, this.date);
-        //     this.arrayTeamItemsContext.push(item);
-        //     item.render();
-        // }
+         let members = this.teamData.members;
+         let teamName = this.teamData.name.split(" ")[0].toLowerCase();
+         for (let member of members) {
+             let item = new TeamItem(this.component, member, teamName, this.daysInCurrentMonth, this.date);
+             this.arrayTeamItemsContext.push(item);
+             item.render();
+         }
     }
 
     updateTeam(newDate) {

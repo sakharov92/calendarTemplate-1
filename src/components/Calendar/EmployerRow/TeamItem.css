@@ -1,0 +1,12 @@
+.frontend__vacation-cell_paid {
+    background-color: rgba(155, 153, 255, 1);
+}
+.frontend__vacation-cell_unpaid {
+    background-color: rgba(155, 153, 255, .2);
+}
+.backend__vacation-cell_paid {
+    background-color: rgba(255, 153, 153, 1);;
+}
+.backend__vacation-cell_unpaid {
+    background-color: rgba(255, 153, 153, .2);
+}

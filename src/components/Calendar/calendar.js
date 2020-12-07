@@ -1,4 +1,4 @@
-import {
+ import {
   Component
 } from "..";
 import {
@@ -13,6 +13,7 @@ import {
 import {
   VacationForm
 } from "../VacationForm";
+import './EmployerRow/TeamItem.css';
 
 
 export class Calendar extends Component {
