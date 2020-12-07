@@ -8,6 +8,7 @@ export class VacationForm extends PopupWindow {
     constructor(parentSelector) {
         super(parentSelector);
         this.component.classList.add("form__container");
+        this.component.classList.remove(`popup__substrate`);
     }
 
 
