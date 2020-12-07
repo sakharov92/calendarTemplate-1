@@ -4,8 +4,9 @@ import { TeamCell } from "./teamCellComponent";
 import { TeamSum } from "./teamSumComponent";
 
 export class TeamRowComponent extends Component {
-  constructor(parentSelector, depTeamInfo, monthLength, date) {
+  constructor(parentSelector, depTeamInfo, monthLength, date, hideTable) {
     super(parentSelector, "tr");
+    this.hideTable = hideTable
     this.date = date;
     this.monthLength = monthLength;
     this.depTeamInfo = depTeamInfo;
@@ -16,9 +17,8 @@ export class TeamRowComponent extends Component {
   }
 
   generateTeamHeader() {
-    const teamName = new TeamName(this.component, this.depTeamInfo, this.date);
+    const teamName = new TeamName(this.component, this.depTeamInfo, this.date, this.hideTable);
     this.component.append(teamName.component);
-
     for (let index = 0; index < 31; index++) {
       const teamCell = new TeamCell(
         this.component,

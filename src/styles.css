@@ -248,3 +248,7 @@ td.sumOfDaysOff {
   max-width: fit-content;
   margin: 0 auto;
 }
+
+.hiddenEmployees {
+  transform: rotateX(180deg);
+}

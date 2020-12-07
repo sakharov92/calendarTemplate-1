@@ -1,8 +1,9 @@
 import { Component } from "../component";
 
 export class TeamName extends Component {
-  constructor(parentSelector, depTeamInfo, date) {
+  constructor(parentSelector, depTeamInfo, date, hideTable) {
     super(parentSelector, "td");
+    this.hideTable = hideTable
     this.date = date;
     this.depTeamInfo = depTeamInfo;
     this.component.className = "teamInfo";
@@ -16,7 +17,12 @@ export class TeamName extends Component {
         <i class="fas chevronBtn fa-chevron-up"></i>
       </div >
     </div >`;
+    this.chevronBtn = this.component.querySelector(".chevronBtn");
+    this.chevronBtn.addEventListener("click", this.hideTable);
+  
   }
+
+
 
   render() {
     super.render();
