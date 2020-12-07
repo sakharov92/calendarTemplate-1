@@ -1,15 +1,7 @@
-import {
-    Component
-} from "..";
-import {
-    dateFormatter
-} from "../../utils"
-import {
-    departmentTeams
-} from "../../index";
-import {
-    Team
-} from "./team";
+import { Component } from "..";
+import { dateFormatter } from "../../utils"
+import { departmentTeams } from "../../index";
+import { Team } from "./team";
 
 export class Table extends Component {
     constructor(parentSelector, date, popupWindowContext) {
