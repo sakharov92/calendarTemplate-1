@@ -16,13 +16,12 @@ export class TeamRowComponent extends Component {
   }
 
   generateTeamHeader() {
-    // insert TeamName
     const teamName = new TeamName(this.component, this.depTeamInfo, this.date);
     this.component.append(teamName.component);
 
     for (let index = 0; index < 31; index++) {
-      // insert TeamCell
-      const teamCell = new TeamCell(this.component,
+      const teamCell = new TeamCell(
+        this.component,
         this.depTeamInfo,
         this.monthLength,
         this.date,
@@ -33,20 +32,24 @@ export class TeamRowComponent extends Component {
         teamCell.hide();
       }
     }
-    // insert TeamSum
     const teamSum = new TeamSum();
     this.component.append(teamSum.component);
   }
 
   updateTeamHeader(newDate) {
-    
     const daysInPreviousMonth = this.monthLength;
     this.monthLength = new Date(
       newDate.getFullYear(),
       newDate.getMonth() + 1,
       0,
     ).getDate();
-   
+
+    const percentageOfAbsentData = this.daysContext[0].depTeamInfo
+      .percentageOfAbsent;
+    const percent = this.component.querySelector(".percent");
+    const currentMonth = newDate.getMonth();
+    percent.textContent = `${percentageOfAbsentData[currentMonth]} %`;
+
     if (this.monthLength < daysInPreviousMonth) {
       for (let index = this.monthLength; index < daysInPreviousMonth; index++) {
         this.daysContext[index].hide();
@@ -58,7 +61,6 @@ export class TeamRowComponent extends Component {
     }
   }
 
-  // rendering TeamRow
   render() {
     this.generateTeamHeader();
     super.render();
