@@ -8,6 +8,7 @@ export class TeamCell extends Component {
     this.depTeamInfo = depTeamInfo;
     this.component.className = "teamInfo";
   }
+
   render() {
     super.render();
   }

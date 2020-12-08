@@ -1,6 +1,6 @@
 import { Component } from "..";
 import { TeamRowComponent } from "./TeamNameRow/teamRowComponent";
-import { TeamItem } from "./EmployerRow/TeamItem";
+import { TeamItem } from "./EmployeeRow/TeamItem";
 
 export class Team extends Component {
   constructor(parentSelector, teamData, daysInCurrentMonth, date) {
@@ -23,10 +23,11 @@ export class Team extends Component {
 
     this.teamHeaderContext.render();
 
-    let members = this.teamData.members;
-    let teamName = this.teamData.name.split(" ")[0].toLowerCase();
-    for (let member of members) {
-      let item = new TeamItem(
+    const { members } = this.teamData;
+    const teamName = this.teamData.name.split(" ")[0].toLowerCase();
+    // eslint-disable-next-line no-restricted-syntax
+    for (const member of members) {
+      const item = new TeamItem(
         this.component,
         member,
         teamName,
@@ -38,13 +39,15 @@ export class Team extends Component {
       this.employeeArray.push(item);
     }
   }
-  hideTable(e) {
+
+  // eslint-disable-next-line unicorn/prevent-abbreviations
+  hideTable(event) {
     let functionWeShouldUse;
-    if (e.target.classList.contains("hiddenEmployees")) {
+    if (event.target.classList.contains("hiddenEmployees")) {
       functionWeShouldUse = this.show;
-      e.target.classList.remove("hiddenEmployees");
+      event.target.classList.remove("hiddenEmployees");
     } else {
-      e.target.classList.add("hiddenEmployees");
+      event.target.classList.add("hiddenEmployees");
       functionWeShouldUse = this.hide;
     }
     for (
@@ -58,8 +61,11 @@ export class Team extends Component {
 
   updateTeam(newDate) {
     this.teamHeaderContext.updateTeamHeader(newDate);
-    this.arrayTeamItemsContext.forEach((e) => e.updateTeamItem(newDate));
+    this.arrayTeamItemsContext.forEach((event) =>
+      event.updateTeamItem(newDate),
+    );
   }
+
   render() {
     this.generateTeam();
     super.render();

@@ -1,20 +1,16 @@
-import {
-    PopupWindow
-} from "../PopupWindow";
+import { PopupWindow } from "../PopupWindow";
 import "./vacationForm.css";
 
-
 export class VacationForm extends PopupWindow {
-    constructor(parentSelector) {
-        super(parentSelector);
-        this.formContainer = document.createElement(`div`);
-        this.formContainer.classList.add("form__container");
-        this.component.appendChild(this.formContainer);
-    }
+  constructor(parentSelector) {
+    super(parentSelector);
+    this.formContainer = document.createElement(`div`);
+    this.formContainer.classList.add("form__container");
+    this.component.append(this.formContainer);
+  }
 
-
-    generateElement() {
-        this.formContainer.innerHTML = `
+  generateElement() {
+    this.formContainer.innerHTML = `
             <form class="form">
                 <div class="form__header">
                     <h3 class="form__title">Vacation Request</h3>
@@ -54,15 +50,15 @@ export class VacationForm extends PopupWindow {
             </form>
         `;
 
-        this.daysAmount = document.createElement('p');
-        this.daysAmount.classList.add("form__days-amount");
-        this.daysCounter = this.component.querySelector(".form__days-counter");
-        this.daysAmount.textContent = '8';
-        this.daysCounter.prepend(this.daysAmount);
-    }
+    this.daysAmount = document.createElement("p");
+    this.daysAmount.classList.add("form__days-amount");
+    this.daysCounter = this.component.querySelector(".form__days-counter");
+    this.daysAmount.textContent = "8";
+    this.daysCounter.prepend(this.daysAmount);
+  }
 
-    render() {
-        this.generateElement();
-        super.render();
-    }
+  render() {
+    this.generateElement();
+    super.render();
+  }
 }

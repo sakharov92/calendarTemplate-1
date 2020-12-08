@@ -3,7 +3,7 @@ import { Navigation } from "./navigation";
 import { Table } from "./table";
 import { PopupWindow } from "../PopupWindow";
 import { VacationForm } from "../VacationForm";
-import "./EmployerRow/TeamItem.css";
+import "./EmployeeRow/TeamItem.css";
 
 export class Calendar extends Component {
   constructor(parentSelector) {
@@ -15,6 +15,7 @@ export class Calendar extends Component {
     this.table = new Table(this.component, this.currentDate, this.popupForm);
     this.nav = new Navigation(this.component, this.currentDate, this.table);
   }
+
   render() {
     super.render();
     this.nav.render();

@@ -14,7 +14,7 @@ export class PopupWindow extends Component {
   }
 
   hide(event) {
-    const target = event.target;
+    const { target } = event;
     if (
       (target && target.matches(".popup__substrate")) ||
       target.matches(".form__cancel-btn") ||

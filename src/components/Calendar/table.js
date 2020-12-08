@@ -1,6 +1,6 @@
 import { Component } from "..";
-import { dateFormatter } from "../../utils"
-import { departmentTeams } from "../../index";
+import { dateFormatter } from "../../utils";
+import { departmentTeams } from "../..";
 import { Team } from "./team";
 
 export class Table extends Component {
@@ -16,20 +16,21 @@ export class Table extends Component {
       0,
     ).getDate();
   }
+
   generateTableHead() {
     let outputCalendarHTML = `<td class="addVacationCell outputItem "><button class="addVacationBtn"><span>+</span>Add Vacation</button></td>`;
-    let outputCalendar = this.component.querySelector(".outputCalendar");
-    for (let i = 1; i <= this.daysInCurrentMonth; i++) {
-      let chosenDate = new Date(
+    const outputCalendar = this.component.querySelector(".outputCalendar");
+    for (let index = 1; index <= this.daysInCurrentMonth; index++) {
+      const chosenDate = new Date(
         this.date.getFullYear(),
         this.date.getMonth(),
-        i,
+        index,
       );
       const [dayName, , date] = dateFormatter
         .format(chosenDate)
         .replace(",", "")
         .split(" ");
-      let isWeekend = dayName === "Sat" || dayName === "Sun";
+      const isWeekend = dayName === "Sat" || dayName === "Sun";
       outputCalendarHTML += `<td class="outputItem ${
         isWeekend ? "weekend" : ""
       }">
@@ -39,63 +40,76 @@ export class Table extends Component {
     }
     outputCalendarHTML += `<td class="sumCell outputItem weekend">Sum</td>`;
     outputCalendar.innerHTML = outputCalendarHTML;
-    const addVacationBtn = this.component.querySelector(".addVacationBtn");
-    addVacationBtn.addEventListener(
+    const addVacationButton = this.component.querySelector(".addVacationBtn");
+    addVacationButton.addEventListener(
       "click",
       this.popupWindowContext.show.bind(this.popupWindowContext),
     );
   }
+
   updateTableHead(newDate) {
-    let daysInPrevMonth = this.daysInCurrentMonth;
+    const daysInPreviousMonth = this.daysInCurrentMonth;
     this.daysInCurrentMonth = new Date(
       newDate.getFullYear(),
       newDate.getMonth() + 1,
       0,
     ).getDate();
-    let daysList = Array.prototype.slice.call(
+    const daysList = Array.prototype.slice.call(
       this.component.querySelectorAll(".outputItem"),
     );
     daysList.shift();
     daysList.pop();
-    if (this.daysInCurrentMonth < daysInPrevMonth) {
-      for (let j = this.daysInCurrentMonth; j < daysInPrevMonth; j++) {
-        daysList[j].parentElement.removeChild(daysList[j]);
+    if (this.daysInCurrentMonth < daysInPreviousMonth) {
+      for (
+        let index = this.daysInCurrentMonth;
+        index < daysInPreviousMonth;
+        index++
+      ) {
+        daysList[index].remove();
       }
-    } else {
-      if (this.daysInCurrentMonth > daysInPrevMonth) {
-        for (let i = daysInPrevMonth; i < this.daysInCurrentMonth; i++) {
-          let newCell = document.createElement("td");
-          newCell.className = "outputItem";
-          newCell.innerHTML = `
+    } else if (this.daysInCurrentMonth > daysInPreviousMonth) {
+      for (
+        let index = daysInPreviousMonth;
+        index < this.daysInCurrentMonth;
+        index++
+      ) {
+        const newCell = document.createElement("td");
+        newCell.className = "outputItem";
+        newCell.innerHTML = `
                                 <span class="outputDay"></span> 
-                                <span class="outputDate">${i + 1}</span>`;
-          daysList.push(newCell);
-          daysList[i - 1].after(newCell);
-        }
+                                <span class="outputDate">${index + 1}</span>`;
+        daysList.push(newCell);
+        daysList[index - 1].after(newCell);
       }
     }
-    for (let i = 1; i <= this.daysInCurrentMonth; i++) {
-      let chosenDate = new Date(newDate.getFullYear(), newDate.getMonth(), i);
+    for (let index = 1; index <= this.daysInCurrentMonth; index++) {
+      const chosenDate = new Date(
+        newDate.getFullYear(),
+        newDate.getMonth(),
+        index,
+      );
       const [dayName] = dateFormatter
         .format(chosenDate)
         .replace(",", "")
         .split(" ");
-      let isWeekend = dayName === "Sat" || dayName === "Sun";
-      daysList[i - 1].querySelector(".outputDay").textContent = dayName.slice(
-        0,
-        -1,
-      );
+      const isWeekend = dayName === "Sat" || dayName === "Sun";
+      daysList[index - 1].querySelector(
+        ".outputDay",
+      ).textContent = dayName.slice(0, -1);
+      // eslint-disable-next-line no-unused-expressions
       isWeekend
-        ? daysList[i - 1].classList.add("weekend")
-        : daysList[i - 1].classList.remove("weekend");
+        ? daysList[index - 1].classList.add("weekend")
+        : daysList[index - 1].classList.remove("weekend");
     }
-    this.teamsContext.forEach((e) => e.updateTeam(newDate));
+    // eslint-disable-next-line unicorn/prevent-abbreviations
+    this.teamsContext.forEach((element) => element.updateTeam(newDate));
   }
+
   render() {
-    for (let i = 0; i < departmentTeams.teams.length; i++) {
-      let team = new Team(
+    for (let index = 0; index < departmentTeams.teams.length; index++) {
+      const team = new Team(
         this.component,
-        departmentTeams.teams[i],
+        departmentTeams.teams[index],
         this.daysInCurrentMonth,
         this.date,
       );

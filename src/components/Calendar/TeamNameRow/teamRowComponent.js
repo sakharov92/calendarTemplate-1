@@ -2,11 +2,10 @@ import { Component } from "../../component";
 import { TeamName } from "./teamNameComponent";
 import { TeamCell } from "./teamCellComponent";
 
-
 export class TeamRowComponent extends Component {
   constructor(parentSelector, depTeamInfo, monthLength, date, hideTable) {
     super(parentSelector, "tr");
-    this.hideTable = hideTable
+    this.hideTable = hideTable;
     this.date = date;
     this.monthLength = monthLength;
     this.depTeamInfo = depTeamInfo;
@@ -17,7 +16,12 @@ export class TeamRowComponent extends Component {
   }
 
   generateTeamHeader() {
-    const teamName = new TeamName(this.component, this.depTeamInfo, this.date, this.hideTable);
+    const teamName = new TeamName(
+      this.component,
+      this.depTeamInfo,
+      this.date,
+      this.hideTable,
+    );
     this.component.append(teamName.component);
     for (let index = 0; index <= 31; index++) {
       const teamCell = new TeamCell(
@@ -28,7 +32,7 @@ export class TeamRowComponent extends Component {
       );
       this.daysContext.push(teamCell);
       this.component.append(teamCell.component);
-      if (index-1 >= this.monthLength) {
+      if (index - 1 >= this.monthLength) {
         teamCell.hide();
       }
     }
