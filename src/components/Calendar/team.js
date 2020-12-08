@@ -27,13 +27,7 @@ export class Team extends Component {
     const teamName = this.teamData.name.split(" ")[0].toLowerCase();
     // eslint-disable-next-line no-restricted-syntax
     for (const member of members) {
-      const item = new TeamItem(
-        this.component,
-        member,
-        teamName,
-        this.daysInCurrentMonth,
-        this.date,
-      );
+      const item = new TeamItem(this.component, member, teamName, this.daysInCurrentMonth, this.date);
       this.arrayTeamItemsContext.push(item);
       item.render();
       this.employeeArray.push(item);
@@ -50,20 +44,14 @@ export class Team extends Component {
       event.target.classList.add("hiddenEmployees");
       functionWeShouldUse = this.hide;
     }
-    for (
-      let employeeItem = 0;
-      employeeItem < this.employeeArray.length;
-      employeeItem++
-    ) {
+    for (let employeeItem = 0; employeeItem < this.employeeArray.length; employeeItem++) {
       functionWeShouldUse.call(this.employeeArray[employeeItem]);
     }
   }
 
   updateTeam(newDate) {
     this.teamHeaderContext.updateTeamHeader(newDate);
-    this.arrayTeamItemsContext.forEach((event) =>
-      event.updateTeamItem(newDate),
-    );
+    this.arrayTeamItemsContext.forEach((event) => event.updateTeamItem(newDate));
   }
 
   render() {

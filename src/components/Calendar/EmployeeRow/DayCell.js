@@ -30,16 +30,12 @@ export class DayCell extends Component {
 
   generateDayCell() {
     const { isWeekend } = this;
-    this.component.className =
-      isWeekend === true ? "dayCell weekend" : "dayCell";
+    this.component.className = isWeekend === true ? "dayCell weekend" : "dayCell";
 
     if (!isWeekend) {
       const vacationInfo = this.isVacation;
       if (typeof vacationInfo === "object") {
-        this.component.className +=
-          vacationInfo.type === "Paid"
-            ? " vacation-cell_paid"
-            : " vacation-cell_unpaid";
+        this.component.className += vacationInfo.type === "Paid" ? " vacation-cell_paid" : " vacation-cell_unpaid";
       }
     }
   }

@@ -13,10 +13,7 @@ export class TeamItem extends Component {
     this.personData = personData;
     this.dayCells = [];
     this.vacationSum = 0;
-    this.vacationSumCell = new VacationSumCell(
-      this.component,
-      this.vacationSum,
-    );
+    this.vacationSumCell = new VacationSumCell(this.component, this.vacationSum);
   }
 
   generateVacationSets() {
@@ -24,15 +21,8 @@ export class TeamItem extends Component {
     for (const vacationItem of this.personData.vacations) {
       const startDate = formatInputDate(vacationItem.startDate);
       const endDate = formatInputDate(vacationItem.endDate);
-      const firstDayOfMonth = new Date(
-        this.date.getFullYear(),
-        this.date.getMonth(),
-      );
-      const lastDayOfMonth = new Date(
-        this.date.getFullYear(),
-        this.date.getMonth(),
-        this.daysInCurrentMonth,
-      );
+      const firstDayOfMonth = new Date(this.date.getFullYear(), this.date.getMonth());
+      const lastDayOfMonth = new Date(this.date.getFullYear(), this.date.getMonth(), this.daysInCurrentMonth);
       const availableDates = {
         set: new Set(),
         type: vacationItem.type,
@@ -41,22 +31,14 @@ export class TeamItem extends Component {
         let currentVacationDate = new Date(startDate.getTime());
         for (
           let index = currentVacationDate.getDate();
-          currentVacationDate <= lastDayOfMonth &&
-          currentVacationDate <= endDate;
+          currentVacationDate <= lastDayOfMonth && currentVacationDate <= endDate;
           ++index
         ) {
-          if (
-            firstDayOfMonth <= currentVacationDate &&
-            lastDayOfMonth >= currentVacationDate
-          ) {
+          if (firstDayOfMonth <= currentVacationDate && lastDayOfMonth >= currentVacationDate) {
             availableDates.set.add(currentVacationDate.toISOString());
           }
 
-          currentVacationDate = new Date(
-            startDate.getFullYear(),
-            startDate.getMonth(),
-            index,
-          );
+          currentVacationDate = new Date(startDate.getFullYear(), startDate.getMonth(), index);
         }
       }
       this.vacationFiltered.push(availableDates);
@@ -92,18 +74,10 @@ export class TeamItem extends Component {
     // добавить функции для смены даты, дней
     this.date = newDate;
     this.vacationSum = 0;
-    this.daysInCurrentMonth = new Date(
-      this.date.getFullYear(),
-      this.date.getMonth() + 1,
-      0,
-    ).getDate();
+    this.daysInCurrentMonth = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDate();
     this.generateVacationSets();
 
-    for (
-      let index = 0;
-      index < daysInPreviousMonth && index < this.daysInCurrentMonth;
-      index++
-    ) {
+    for (let index = 0; index < daysInPreviousMonth && index < this.daysInCurrentMonth; index++) {
       this.dayCells[index].updateDayCell(
         this.vacationFiltered,
         new Date(this.date.getFullYear(), this.date.getMonth(), index + 1),
@@ -111,20 +85,13 @@ export class TeamItem extends Component {
       this.vacationSum += this.dayCells[index].vacationSum;
     }
     if (this.daysInCurrentMonth < daysInPreviousMonth) {
-      const cellsToRemove = this.dayCells.splice(
-        this.daysInCurrentMonth,
-        daysInPreviousMonth - this.daysInCurrentMonth,
-      );
+      const cellsToRemove = this.dayCells.splice(this.daysInCurrentMonth, daysInPreviousMonth - this.daysInCurrentMonth);
       for (const cellToRemove of cellsToRemove) {
         cellToRemove.component.remove();
       }
     } else if (this.daysInCurrentMonth > daysInPreviousMonth) {
       this.component.lastElementChild.remove();
-      for (
-        let index = daysInPreviousMonth + 1;
-        index <= this.daysInCurrentMonth;
-        ++index
-      ) {
+      for (let index = daysInPreviousMonth + 1; index <= this.daysInCurrentMonth; ++index) {
         const dayCell = new DayCell(
           this.component,
           this.vacationFiltered,

@@ -1,6 +1,5 @@
 {
   "root": true,
-  "endOfLine": "auto",
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module"
@@ -22,9 +21,10 @@
     "module": true
   },
   "rules": {
+    "no-restricted-syntax": "off",
     "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
     "unicorn/filename-case": [
-      "error",
+      "off",
       {
         "case": "camelCase"
       }

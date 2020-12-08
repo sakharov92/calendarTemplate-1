@@ -7,16 +7,10 @@ export class Navigation extends Component {
     this.tableComponent = tableComponent;
     this.date = date;
     this.component.innerHTML = `<button class="navBtn prevMonth"><i class="fas fa-arrow-left"></i></button>
-        <p class="chosenMonth">${
-          dateFormatter.format(this.date).replace(",", "").split(" ")[1]
-        } ${this.date.getFullYear()}</p>
+        <p class="chosenMonth">${dateFormatter.format(this.date).replace(",", "").split(" ")[1]} ${this.date.getFullYear()}</p>
         <button class="navBtn nextMonth"><i class="fas fa-arrow-right"></i></button>`;
-    this.component
-      .querySelector(".prevMonth")
-      .addEventListener("click", this.prevMonth.bind(this));
-    this.component
-      .querySelector(".nextMonth")
-      .addEventListener("click", this.nextMonth.bind(this));
+    this.component.querySelector(".prevMonth").addEventListener("click", this.prevMonth.bind(this));
+    this.component.querySelector(".nextMonth").addEventListener("click", this.nextMonth.bind(this));
     this.component.classList.add("monthBlock");
   }
 
