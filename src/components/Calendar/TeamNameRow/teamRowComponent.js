@@ -1,7 +1,7 @@
-import { Component } from "../component";
+import { Component } from "../../component";
 import { TeamName } from "./teamNameComponent";
 import { TeamCell } from "./teamCellComponent";
-import { TeamSum } from "./teamSumComponent";
+
 
 export class TeamRowComponent extends Component {
   constructor(parentSelector, depTeamInfo, monthLength, date, hideTable) {
@@ -19,7 +19,7 @@ export class TeamRowComponent extends Component {
   generateTeamHeader() {
     const teamName = new TeamName(this.component, this.depTeamInfo, this.date, this.hideTable);
     this.component.append(teamName.component);
-    for (let index = 0; index < 31; index++) {
+    for (let index = 0; index <= 31; index++) {
       const teamCell = new TeamCell(
         this.component,
         this.depTeamInfo,
@@ -28,12 +28,10 @@ export class TeamRowComponent extends Component {
       );
       this.daysContext.push(teamCell);
       this.component.append(teamCell.component);
-      if (index >= this.monthLength) {
+      if (index-1 >= this.monthLength) {
         teamCell.hide();
       }
     }
-    const teamSum = new TeamSum();
-    this.component.append(teamSum.component);
   }
 
   updateTeamHeader(newDate) {

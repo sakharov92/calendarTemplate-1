@@ -40,7 +40,7 @@ export class TeamItem extends Component {
     generateTeamItem() {
         //debugger
         this.generateVacationSets();
-        this.component.className = `employeeКRow ${this.teamName}`;
+        this.component.className = `employeeRow ${this.teamName}`;
         let nameCell = document.createElement("td");
         nameCell.className = "nameCell";
         nameCell.textContent = this.personData.name;

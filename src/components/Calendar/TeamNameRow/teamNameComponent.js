@@ -1,4 +1,4 @@
-import { Component } from "../component";
+import { Component } from "../../component";
 
 export class TeamName extends Component {
   constructor(parentSelector, depTeamInfo, date, hideTable) {
@@ -7,9 +7,9 @@ export class TeamName extends Component {
     this.date = date;
     this.depTeamInfo = depTeamInfo;
     this.component.className = "teamInfo";
-    this.component.innerHTML = `<div class="infoWrapper">
-      <p>${this.depTeamInfo.name}</p>
-      <div class="infoBlock"> 
+    this.component.innerHTML = `<div class="teamInfo__Wrapper">
+      <p class="teamInfo__name">${this.depTeamInfo.name}</p>
+      <div class="teamInfo__block"> 
         <i class="fas fa-users"></i>
           <span>${this.depTeamInfo.members.length}</span >
           <div class="percent">
@@ -19,11 +19,8 @@ export class TeamName extends Component {
     </div >`;
     this.chevronBtn = this.component.querySelector(".chevronBtn");
     this.chevronBtn.addEventListener("click", this.hideTable);
-  
   }
-
-
-
+  
   render() {
     super.render();
   }
