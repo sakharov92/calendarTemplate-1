@@ -9,9 +9,7 @@ export class TeamRowComponent extends Component {
     this.date = date;
     this.monthLength = monthLength;
     this.depTeamInfo = depTeamInfo;
-    this.component.className = `mainRow ${this.depTeamInfo.name
-      .split(" ")[0]
-      .toLowerCase()}`;
+    this.component.className = `mainRow ${this.depTeamInfo.name.split(" ")[0].toLowerCase()}`;
     this.daysContext = [];
   }
 
@@ -22,11 +20,7 @@ export class TeamRowComponent extends Component {
 
     for (let index = 0; index < 31; index++) {
       // insert TeamCell
-      const teamCell = new TeamCell(this.component,
-        this.depTeamInfo,
-        this.monthLength,
-        this.date,
-      );
+      const teamCell = new TeamCell(this.component, this.depTeamInfo, this.monthLength, this.date);
       this.daysContext.push(teamCell);
       this.component.append(teamCell.component);
       if (index >= this.monthLength) {
@@ -39,14 +33,9 @@ export class TeamRowComponent extends Component {
   }
 
   updateTeamHeader(newDate) {
-    
     const daysInPreviousMonth = this.monthLength;
-    this.monthLength = new Date(
-      newDate.getFullYear(),
-      newDate.getMonth() + 1,
-      0,
-    ).getDate();
-   
+    this.monthLength = new Date(newDate.getFullYear(), newDate.getMonth() + 1, 0).getDate();
+
     if (this.monthLength < daysInPreviousMonth) {
       for (let index = this.monthLength; index < daysInPreviousMonth; index++) {
         this.daysContext[index].hide();

@@ -24,18 +24,58 @@ export const departmentTeams = {
       ],
     },
     {
+      name: "Design Team",
+      percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
+      members: [
+        {
+          name: "Des_Team_User1",
+          vacations: [
+            { startDate: "15.01.2021", endDate: "22.01.2021", type: "Paid" },
+            { startDate: "05.02.2021", endDate: "15.02.2021", type: "Paid" },
+          ],
+        },
+        {
+          name: "Des_Team_User2",
+          vacations: [
+            { startDate: "08.12.2020", endDate: "21.12.2020", type: "Paid" },
+            { startDate: "20.02.2021", endDate: "22.02.2021", type: "UnPaid" },
+          ],
+        },
+      ],
+    },
+    {
       name: "Backend Team",
       percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
       members: [
         {
           name: "BE_Team_User1",
           vacations: [
-            { startDate: "15.01.2021", endDate: "22.01.2021", type: "Paid" },
-            { startDate: "05.02.2021", endDate: "15.02.2021", type: "UnPaid" },
+            { startDate: "10.12.2020", endDate: "15.12.2020", type: "Paid" },
+            { startDate: "05.02.2021", endDate: "15.02.2021", type: "Paid" },
           ],
         },
         {
           name: "BE_Team_User2",
+          vacations: [
+            { startDate: "01.02.2020", endDate: "10.02.2020", type: "Paid" },
+            { startDate: "20.02.2021", endDate: "22.02.2021", type: "UnPaid" },
+          ],
+        },
+      ],
+    },
+    {
+      name: "Managers Team",
+      percentageOfAbsent: [0, 2, 0, 0, 1, 2, 2, 2, 2, 2, 1, 1],
+      members: [
+        {
+          name: "Man_Team_User1",
+          vacations: [
+            { startDate: "15.12.2020", endDate: "30.12.2020", type: "Paid" },
+            { startDate: "05.02.2021", endDate: "15.02.2021", type: "Paid" },
+          ],
+        },
+        {
+          name: "Man_Team_User2",
           vacations: [
             { startDate: "01.02.2020", endDate: "10.02.2020", type: "Paid" },
             { startDate: "20.02.2021", endDate: "22.02.2021", type: "UnPaid" },

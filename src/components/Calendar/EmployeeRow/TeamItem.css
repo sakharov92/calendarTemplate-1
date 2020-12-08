@@ -1,0 +1,25 @@
+tbody:nth-child(2) .employeeКRow {
+    border-left: 3px solid rgb(155, 153, 255);
+}
+tbody:nth-child(3) .employeeКRow {
+    border-left: 3px solid rgb(122, 175, 255);
+}
+tbody:nth-child(4) .employeeКRow {
+    border-left: 3px solid rgb(155, 153, 255);
+}
+tbody:nth-child(5) .employeeКRow {
+    border-left: 3px solid rgb(255, 167, 104);
+}
+/*
+.frontend__vacation-cell_paid {
+    background-color: rgba(155, 153, 255, 1);
+}
+.frontend__vacation-cell_unpaid {
+    background-color: rgba(155, 153, 255, .2);
+}
+.backend__vacation-cell_paid {
+    background-color: rgba(255, 153, 153, 1);;
+}
+.backend__vacation-cell_unpaid {
+    background-color: rgba(255, 153, 153, .2);
+}*/
