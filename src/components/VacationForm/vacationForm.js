@@ -1,25 +1,22 @@
-import {
-    PopupWindow
-} from "../PopupWindow";
+import { PopupWindow } from "../PopupWindow";
 import "./vacationForm.css";
 
 
 export class VacationForm extends PopupWindow {
-    constructor(parentSelector) {
+    constructor(parentSelector, spinnerContext) {
         super(parentSelector);
-        this.formContainer = document.createElement(`div`);
-        this.formContainer.classList.add("form__container");
-        this.component.appendChild(this.formContainer);
+        this.spinnerContext = spinnerContext;
+        this.component.classList.add("form__container");
+        this.component.classList.remove(`popup__substrate`);
     }
 
 
     generateElement() {
-        this.formContainer.innerHTML = `
+        this.component.innerHTML = `
             <form class="form">
                 <div class="form__header">
                     <h3 class="form__title">Vacation Request</h3>
                     <div class="form__days-counter">
-<!--                        <p class="form__days-amount">8</p>-->
                         <p class="form__days-text">days</p>
                     </div>
                 </div>
@@ -49,7 +46,7 @@ export class VacationForm extends PopupWindow {
                 </div>
                 <div class="form__footer">
                     <button class="form__cancel-btn form__btn" type="submit">Cancel</button>
-                    <button class="form__send-btn form__btn" type="submit">Send</button>
+                    
                 </div>
             </form>
         `;
@@ -59,7 +56,29 @@ export class VacationForm extends PopupWindow {
         this.daysCounter = this.component.querySelector(".form__days-counter");
         this.daysAmount.textContent = '8';
         this.daysCounter.prepend(this.daysAmount);
+
+        this.sendBtn = document.createElement("button");
+        this.sendBtn.classList.add("form__send-btn");
+        this.sendBtn.classList.add("form__btn")
+        // this.sendBtn.createAttribute("type", "submit");
+        this.sendBtn.textContent = "Send";
+        this.formFooter = this.component.querySelector(".form__footer");
+        this.formFooter.appendChild(this.sendBtn);
+
+        const btn = this.component.querySelector(".form__send-btn");
+
+        btn.addEventListener("click", function (event) {
+            event.preventDefault()
+            console.log(this.spinnerContext)
+            this.spinnerContext.showSpinner.call(this.spinnerContext);
+            this.component.style.display = "none";
+        }.bind(this));
+
+
     }
+
+
+
 
     render() {
         this.generateElement();
