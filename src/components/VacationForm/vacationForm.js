@@ -1,14 +1,13 @@
 import { PopupWindow } from "../PopupWindow";
-import { Spinner } from "../Spinner";
 import "./vacationForm.css";
 
 
 export class VacationForm extends PopupWindow {
-    constructor(parentSelector) {
+    constructor(parentSelector, spinnerContext) {
         super(parentSelector);
+        this.spinnerContext = spinnerContext;
         this.component.classList.add("form__container");
         this.component.classList.remove(`popup__substrate`);
-        this.spinner = new Spinner();
     }
 
 
@@ -68,9 +67,16 @@ export class VacationForm extends PopupWindow {
 
         const btn = this.component.querySelector(".form__send-btn");
 
-        btn.addEventListener("click", this.spinner.showSpinner.bind(this.spinner));
+        btn.addEventListener("click", function (event) {
+            event.preventDefault()
+            console.log(this.spinnerContext)
+            this.spinnerContext.showSpinner.call(this.spinnerContext);
+            this.component.style.display = "none";
+        }.bind(this));
+
 
     }
+
 
 
 

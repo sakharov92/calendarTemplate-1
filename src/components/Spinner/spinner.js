@@ -5,9 +5,9 @@ import "./spinner.css";
 export class Spinner extends PopupWindow {
     constructor(parentSelector){
         super(parentSelector);
-        this.component.classList.add("form__container");
+        this.component.classList.add("spinner__container");
         this.component.classList.remove(`popup__substrate`);
-        this.component.style.display = "none";
+        // this.component.style.display = "none";
 
     }
 
@@ -40,8 +40,10 @@ export class Spinner extends PopupWindow {
     }
 
     showSpinner(){
-        this.component.style.display = "flex";
-        console.log("sp")
+        // this.component.style.display = "flex"
+        // event.preventDefault();
+        this.show()
+        console.log("this.spinnerContext")
     }
 
 
