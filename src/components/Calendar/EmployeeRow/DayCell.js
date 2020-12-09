@@ -1,6 +1,7 @@
 import { Component } from "../..";
 
 export class DayCell extends Component {
+  // деструктуризация
   constructor(parentComponent, vacationFiltered, date) {
     super(parentComponent, "td");
     this.vacation = vacationFiltered;
@@ -16,8 +17,19 @@ export class DayCell extends Component {
   get isVacation() {
     const cellDate = this.date.toISOString();
     for (const vacationItem of this.vacation) {
-      if (vacationItem.set.has(cellDate)) {
-        this.increaseVacationSum();
+      const vacationItemEntries = [...vacationItem.availableDatesList];
+      const vacationUiStart = vacationItemEntries[0];
+      const vacationUiEnd = vacationItemEntries[vacationItemEntries.length - 1];
+      if (vacationItem.availableDatesList.has(cellDate)) {
+        if (!this.isWeekend) {
+          this.increaseVacationSum();
+        }
+        if (cellDate === vacationUiStart) {
+          this.component.className += " vacation-cell_ui-start";
+        }
+        if (cellDate === vacationUiEnd) {
+          this.component.className += " vacation-cell_ui-end";
+        }
         return { type: vacationItem.type };
       }
     }
@@ -30,13 +42,10 @@ export class DayCell extends Component {
 
   generateDayCell() {
     const { isWeekend } = this;
-    this.component.className = isWeekend === true ? "dayCell weekend" : "dayCell";
-
-    if (!isWeekend) {
-      const vacationInfo = this.isVacation;
-      if (typeof vacationInfo === "object") {
-        this.component.className += vacationInfo.type === "Paid" ? " vacation-cell_paid" : " vacation-cell_unpaid";
-      }
+    this.component.className = isWeekend === true ? " dayCell weekend" : " dayCell";
+    const vacationInfo = this.isVacation;
+    if (typeof vacationInfo === "object") {
+      this.component.className += vacationInfo.type === "Paid" ? " vacation-cell_paid" : " vacation-cell_unpaid";
     }
   }
 

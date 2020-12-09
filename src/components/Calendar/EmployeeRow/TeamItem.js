@@ -19,12 +19,13 @@ export class TeamItem extends Component {
   generateVacationSets() {
     this.vacationFiltered = [];
     for (const vacationItem of this.personData.vacations) {
+      // debugger
       const startDate = formatInputDate(vacationItem.startDate);
       const endDate = formatInputDate(vacationItem.endDate);
       const firstDayOfMonth = new Date(this.date.getFullYear(), this.date.getMonth());
       const lastDayOfMonth = new Date(this.date.getFullYear(), this.date.getMonth(), this.daysInCurrentMonth);
       const availableDates = {
-        set: new Set(),
+        availableDatesList: new Set(),
         type: vacationItem.type,
       };
       if (!(endDate < firstDayOfMonth) && !(startDate > lastDayOfMonth)) {
@@ -34,21 +35,39 @@ export class TeamItem extends Component {
           currentVacationDate <= lastDayOfMonth && currentVacationDate <= endDate;
           ++index
         ) {
-          if (firstDayOfMonth <= currentVacationDate && lastDayOfMonth >= currentVacationDate) {
-            availableDates.set.add(currentVacationDate.toISOString());
-          }
-
           currentVacationDate = new Date(startDate.getFullYear(), startDate.getMonth(), index);
+          if (firstDayOfMonth <= currentVacationDate && lastDayOfMonth >= currentVacationDate) {
+            availableDates.availableDatesList.add(currentVacationDate.toISOString());
+          }
+          currentVacationDate = new Date(startDate.getFullYear(), startDate.getMonth(), index + 1);
         }
       }
       this.vacationFiltered.push(availableDates);
     }
   }
 
+  /* showVacationInfoText() {
+    //доделать/проверить
+    let startUiCell, startUiCellIndex;
+    for(let index = 0; index < this.dayCells.length; ++index) {
+      if(this.dayCells[index].component.className.includes('vacation-cell_ui-start')) {
+        startUiCell = this.dayCells[index].component;
+        startUiCellIndex = index;
+      }
+      if(this.dayCells[index].component.className.includes('vacation-cell_ui-end')) {
+        const typeElement = document.createElement('div');
+        typeElement.className = "type-text";
+        typeElement.textContent = this.dayCells[index].component.className.includes('vacation-cell_unpaid')
+          ? 'UnPd' : 'Pd';
+        typeElement.style.left = `${17.5*(index - startUiCellIndex)}px`;
+        startUiCell.append(typeElement);
+      }
+    }
+  } */
+
   generateTeamItem() {
     this.generateVacationSets();
     this.component.className = `employeeКRow`;
-    //this.component.className = `employeeКRow ${this.teamName}`;
     const nameCell = document.createElement("td");
     nameCell.className = "nameCell";
     nameCell.textContent = this.personData.name;
@@ -66,11 +85,11 @@ export class TeamItem extends Component {
     }
     this.vacationSumCell.updateVacationSumCell(this.vacationSum);
     this.vacationSumCell.render();
+    // this.showVacationInfoText();
   }
 
   updateTeamItem(newDate) {
     const daysInPreviousMonth = this.daysInCurrentMonth;
-
     // добавить функции для смены даты, дней
     this.date = newDate;
     this.vacationSum = 0;
@@ -97,13 +116,14 @@ export class TeamItem extends Component {
           this.vacationFiltered,
           new Date(this.date.getFullYear(), this.date.getMonth(), index),
         );
-        this.vacationSum += dayCell.vacationSum;
         dayCell.render();
+        this.vacationSum += dayCell.vacationSum;
         this.dayCells.push(dayCell);
       }
       this.vacationSumCell.render();
     }
     this.vacationSumCell.updateVacationSumCell(this.vacationSum);
+    // this.showVacationInfoText();
   }
 
   render() {
