@@ -3,9 +3,11 @@
   color: #949494;
   margin-right: -5px;
 }
+
 tbody tr {
   height: 33px;
 }
+
 .mainRow::last-child {
   background: var(--main-row);
 }
@@ -17,32 +19,34 @@ tbody tr {
   line-height: 17px;
   background: var(--teamHeader-bg);
 }
+
 .teamInfo__Wrapper {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
 }
-.teamInfo__name{
-  flex: 1 1 auto;
+
+.teamInfo__name {
+  width: 200px;
   padding: 0px 10px;
 }
-.teamInfo__block{
-  flex: 0 0 120px;
+
+.teamInfo__block {
+  flex: 0 0 auto;
+  width: fit-content;
 }
+
 .teamInfo__block .fas {
   margin-top: 0px;
+}
+.teamInfo__block .chevronBtn {
+  font-size: 10px;
+  padding: 5px;
 }
 .teamInfo span {
   color: #949494;
   font-size: 12px;
   line-height: 18px;
-}
-.chevronBtn {
-  font-size: 10px;
-  padding: 5px;
-}
-.chevronBtn {
-  cursor: pointer;
 }
 
 .percent {
@@ -55,28 +59,19 @@ tbody tr {
   min-width: 24px;
   margin: 0px 13px;
 }
-.frontend {
-  border-left: 3px solid var(--front-color);
-}
-.designers {
-  border-left: 3px solid var(--designer-color);
-}
-.backend {
-  border-left: 3px solid var(--backend-color);
-}
-.managers {
-  border-left: 3px solid var(--manager-color);
-}
 
 .frontend .mainRow td {
   background: rgba(155, 153, 255, 0.1);
 }
-.designers .mainRow td {
+
+.design .mainRow td {
   background: rgba(122, 175, 255, 0.1);
 }
+
 .backend .mainRow td {
   background: rgba(255, 153, 153, 0.1);
 }
+
 .managers .mainRow td {
   background: rgba(255, 167, 104, 0.1);
 }
@@ -84,14 +79,15 @@ tbody tr {
 .frontend .percent {
   background: var(--front-color);
 }
-.designers .percent {
+
+.design .percent {
   background: var(--designer-color);
 }
+
 .backend .percent {
   background: var(--backend-color);
 }
+
 .managers .percent {
   background: var(--manager-color);
 }
-
-

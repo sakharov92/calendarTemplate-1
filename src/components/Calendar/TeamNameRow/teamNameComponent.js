@@ -3,7 +3,7 @@ import { Component } from "../../component";
 export class TeamName extends Component {
   constructor(parentSelector, depTeamInfo, date, hideTable) {
     super(parentSelector, "td");
-    this.hideTable = hideTable
+    this.hideTable = hideTable;
     this.date = date;
     this.depTeamInfo = depTeamInfo;
     this.component.className = "teamInfo";
@@ -14,13 +14,15 @@ export class TeamName extends Component {
           <span>${this.depTeamInfo.members.length}</span >
           <div class="percent">
           ${this.depTeamInfo.percentageOfAbsent[this.date.getMonth()]}%</div>
-        <i class="fas chevronBtn fa-chevron-up"></i>
+        <button>
+          <i class="fas chevronBtn fa-chevron-up"></i>
+        </button>
       </div >
     </div >`;
     this.chevronBtn = this.component.querySelector(".chevronBtn");
     this.chevronBtn.addEventListener("click", this.hideTable);
   }
-  
+
   render() {
     super.render();
   }
