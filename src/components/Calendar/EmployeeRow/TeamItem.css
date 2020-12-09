@@ -10,7 +10,7 @@ tbody:nth-child(4) .employeeКRow {
 tbody:nth-child(5) .employeeКRow {
     border-left: 3px solid rgb(255, 167, 104);
 }
-.vacation-cell_ui-start.vacation-cell_unpaid:before,
+/*.vacation-cell_ui-start.vacation-cell_unpaid:before,
 .vacation-cell_ui-start.vacation-cell_paid:before{
     top: 2px;
     left: 1px;
@@ -23,7 +23,7 @@ tbody:nth-child(5) .employeeКRow {
 .vacation-cell_ui-start.vacation-cell_paid{
     position: absolute;
     border: none;
-}
+}*/
 .dayCell {
     min-width: 33.64px;
     max-height: 32.73px;
