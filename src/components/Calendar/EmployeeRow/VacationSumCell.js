@@ -22,3 +22,4 @@ export class VacationSumCell extends Component {
     super.render();
   }
 }
+
