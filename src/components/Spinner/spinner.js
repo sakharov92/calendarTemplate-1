@@ -34,6 +34,10 @@ export class Spinner extends PopupWindow {
     this.show();
   }
 
+  hideSpinner(){
+    this.hide();
+  }
+
   render() {
     this.generateElement();
     super.render();

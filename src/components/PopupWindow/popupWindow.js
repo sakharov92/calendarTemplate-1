@@ -14,6 +14,10 @@ export class PopupWindow extends Component {
     if ((target && target.matches(".popup__substrate")) || target.matches(".form__cancel-btn")) {
       event.preventDefault();
       this.popupSubstrate.style.display = "none";
+      const popupChildren = this.popupSubstrate.childNodes;
+      for (let i = 0; i < popupChildren.length; i++){
+        popupChildren[i].style.display = "none"
+      }
       document.body.style.overflow = "auto";
     }
   }

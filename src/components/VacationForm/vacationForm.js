@@ -68,12 +68,10 @@ export class VacationForm extends PopupWindow {
             this.spinnerContext.showSpinner.call(this.spinnerContext);
             this.component.style.display = "none";
         }.bind(this));
-
-
     }
 
 
-
+/*.addEventListener("click",this.spinnerContext.hideSpinner.call(this.spinnerContext))*/
 
     render() {
         this.generateElement();
