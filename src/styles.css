@@ -47,8 +47,10 @@ td {
   padding: 5px;
 }
 
-button:hover {
+button {
   cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 .calendar {
@@ -70,8 +72,6 @@ button:hover {
 
 .navBtn {
   background-color: transparent;
-  border: none;
-  outline: none;
 }
 
 .chosenMonth {
@@ -184,26 +184,10 @@ td.sumOfDaysOff {
   line-height: 18px;
 }
 
-.percent {
-  padding: 2px 5px;
-  font-size: 12px;
-  line-height: 18px;
-  color: #fff;
-  border-radius: 2px;
-  display: inline-block;
-  min-width: 24px;
-  margin-left: 13px;
-  margin-right: 18px;
-}
-
 .chevronBtn {
   font-size: 10px;
   padding: 0 10px;
   padding-top: 10px;
-}
-
-.chevronBtn {
-  cursor: pointer;
 }
 
 .hideTable {
@@ -225,10 +209,6 @@ td.sumOfDaysOff {
   outline: none;
 }
 
-.navBtn:hover {
-  cursor: pointer;
-}
-
 .hiddenEmployees {
   transform: rotateX(180deg);
 }
@@ -237,4 +217,21 @@ tbody:after {
   height: 33px;
   display: table-row;
   content: '';
+}
+
+tbody:nth-child(2) .employeeКRow,
+tbody:nth-child(2) .mainRow {
+  border-left: 3px solid var(--front-color);
+}
+tbody:nth-child(3) .employeeКRow,
+tbody:nth-child(3) .mainRow {
+  border-left: 3px solid var(--designer-color);
+}
+tbody:nth-child(4) .employeeКRow,
+tbody:nth-child(4) .mainRow {
+  border-left: 3px solid var(--backend-color);
+}
+tbody:nth-child(5) .employeeКRow,
+tbody:nth-child(5) .mainRow {
+  border-left: 3px solid var(--manager-color);
 }
