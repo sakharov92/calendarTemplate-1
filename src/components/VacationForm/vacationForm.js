@@ -65,7 +65,6 @@ export class VacationForm extends PopupWindow {
 
         btn.addEventListener("click", function (event) {
             event.preventDefault()
-            console.log(this.spinnerContext)
             this.spinnerContext.showSpinner.call(this.spinnerContext);
             this.component.style.display = "none";
         }.bind(this));
