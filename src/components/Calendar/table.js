@@ -11,6 +11,7 @@ export class Table extends Component {
     this.date = date;
     this.component.innerHTML = `<thead><tr class="outputCalendar"></tr></thead>`;
     this.daysInCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+
   }
 
   generateTableHead() {
@@ -31,7 +32,7 @@ export class Table extends Component {
     addVacationButton.addEventListener("click", this.popupWindowContext.show.bind(this.popupWindowContext));
   }
 
-  updateTableHead(newDate) {
+  updateTableHead(newDate){
     const daysInPreviousMonth = this.daysInCurrentMonth;
     this.daysInCurrentMonth = new Date(newDate.getFullYear(), newDate.getMonth() + 1, 0).getDate();
     let daysList = Array.prototype.slice.call(this.component.querySelectorAll(".outputItem"));
@@ -66,6 +67,7 @@ export class Table extends Component {
   render() {
     for (let index = 0; index < departmentTeams.teams.length; index++) {
       const team = new Team(this.component, departmentTeams.teams[index], this.daysInCurrentMonth, this.date);
+
       this.teamsContext.push(team);
       team.render();
     }
