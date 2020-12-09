@@ -34,9 +34,8 @@ export class Table extends Component {
   updateTableHead(newDate) {
     const daysInPreviousMonth = this.daysInCurrentMonth;
     this.daysInCurrentMonth = new Date(newDate.getFullYear(), newDate.getMonth() + 1, 0).getDate();
-    const daysList = Array.prototype.slice.call(this.component.querySelectorAll(".outputItem"));
-    daysList.shift();
-    daysList.pop();
+    let daysList = Array.prototype.slice.call(this.component.querySelectorAll(".outputItem"));
+    daysList = daysList.splice(1, daysList.length - 2);
     if (this.daysInCurrentMonth < daysInPreviousMonth) {
       for (let index = this.daysInCurrentMonth; index < daysInPreviousMonth; index++) {
         daysList[index].remove();
@@ -55,12 +54,12 @@ export class Table extends Component {
     for (let index = 1; index <= this.daysInCurrentMonth; index++) {
       const chosenDate = new Date(newDate.getFullYear(), newDate.getMonth(), index);
       const [dayName] = dateFormatter.format(chosenDate).replace(",", "").split(" ");
-      const isWeekend = dayName === "Sat" || dayName === "Sun";
       daysList[index - 1].querySelector(".outputDay").textContent = dayName.slice(0, -1);
       // eslint-disable-next-line no-unused-expressions
-      isWeekend ? daysList[index - 1].classList.add("weekend") : daysList[index - 1].classList.remove("weekend");
+      dayName === "Sat" || dayName === "Sun"
+        ? daysList[index - 1].classList.add("weekend")
+        : daysList[index - 1].classList.remove("weekend");
     }
-    // eslint-disable-next-line unicorn/prevent-abbreviations
     this.teamsContext.forEach((element) => element.updateTeam(newDate));
   }
 
