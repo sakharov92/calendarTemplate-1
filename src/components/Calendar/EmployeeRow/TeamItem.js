@@ -46,24 +46,28 @@ export class TeamItem extends Component {
     }
   }
 
-  /* showVacationInfoText() {
-    //доделать/проверить
-    let startUiCell, startUiCellIndex;
-    for(let index = 0; index < this.dayCells.length; ++index) {
-      if(this.dayCells[index].component.className.includes('vacation-cell_ui-start')) {
-        startUiCell = this.dayCells[index].component;
+  showVacationInfoText() {
+    let startUiCellIndex;
+    let vacationUILength;
+    let shift;
+    for (let index = 0; index < this.dayCells.length; ++index) {
+      if (this.dayCells[index].component.className.includes("vacation-cell_ui-start")) {
         startUiCellIndex = index;
       }
-      if(this.dayCells[index].component.className.includes('vacation-cell_ui-end')) {
-        const typeElement = document.createElement('div');
-        typeElement.className = "type-text";
-        typeElement.textContent = this.dayCells[index].component.className.includes('vacation-cell_unpaid')
-          ? 'UnPd' : 'Pd';
-        typeElement.style.left = `${17.5*(index - startUiCellIndex)}px`;
-        startUiCell.append(typeElement);
+      if (this.dayCells[index].component.className.includes("vacation-cell_ui-end")) {
+        vacationUILength = index - startUiCellIndex;
+        if (vacationUILength % 2 === 0) {
+          shift = vacationUILength / 2;
+          this.dayCells[startUiCellIndex + shift].component.className +=
+            " vacation-cell_type-text vacation-cell_type-text_left_s";
+        } else {
+          shift = (vacationUILength - 1) / 2;
+          this.dayCells[startUiCellIndex + shift].component.className +=
+            " vacation-cell_type-text vacation-cell_type-text_left_l";
+        }
       }
     }
-  } */
+  }
 
   generateTeamItem() {
     this.generateVacationSets();
@@ -85,7 +89,7 @@ export class TeamItem extends Component {
     }
     this.vacationSumCell.updateVacationSumCell(this.vacationSum);
     this.vacationSumCell.render();
-    // this.showVacationInfoText();
+    this.showVacationInfoText();
   }
 
   updateTeamItem(newDate) {
@@ -123,7 +127,7 @@ export class TeamItem extends Component {
       this.vacationSumCell.render();
     }
     this.vacationSumCell.updateVacationSumCell(this.vacationSum);
-    // this.showVacationInfoText();
+    this.showVacationInfoText();
   }
 
   render() {
