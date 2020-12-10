@@ -6,7 +6,6 @@ export class Spinner extends PopupWindow {
     super(parentSelector);
     this.component.classList.add("spinner__container");
     this.component.classList.remove(`popup__substrate`);
-    // this.component.style.display = "none";
   }
 
   generateElement() {
@@ -32,14 +31,14 @@ export class Spinner extends PopupWindow {
   }
 
   showSpinner() {
-    // this.component.style.display = "flex"
-    // event.preventDefault();
     this.show();
-    console.log("this.spinnerContext");
+  }
+
+  hideSpinner(){
+    this.hide();
   }
 
   render() {
-    // this.showSpinner();
     this.generateElement();
     super.render();
   }
