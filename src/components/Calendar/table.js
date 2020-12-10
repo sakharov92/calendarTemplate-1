@@ -11,6 +11,7 @@ export class Table extends Component {
     this.date = date;
     this.component.innerHTML = `<thead><tr class="outputCalendar"></tr></thead>`;
     this.daysInCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    this.teamSumStats = [];
   }
 
   generateTableHead() {
@@ -60,7 +61,23 @@ export class Table extends Component {
         ? daysList[index - 1].classList.add("weekend")
         : daysList[index - 1].classList.remove("weekend");
     }
-    this.teamsContext.forEach((element) => element.updateTeam(newDate));
+    this.teamSumStats = [];
+    for (let index = 0; index < this.teamsContext.length; ++index) {
+      this.teamsContext[index].updateTeam(newDate);
+      this.increaseTeamSumStats(this.teamsContext[index].dayPersonStats);
+    }
+  }
+
+  increaseTeamSumStats(teamSumArray) {
+    if (this.teamSumStats.length === 0) {
+      this.teamSumStats = teamSumArray;
+    } else {
+      for (let index = 0; index < this.teamSumStats.length; ++index) {
+        if (this.teamSumStats[index] !== "weekend") {
+          this.teamSumStats[index] += teamSumArray[index];
+        }
+      }
+    }
   }
 
   render() {
@@ -69,6 +86,7 @@ export class Table extends Component {
 
       this.teamsContext.push(team);
       team.render();
+      this.increaseTeamSumStats(this.teamsContext[index].dayPersonStats);
     }
     this.generateTableHead();
     super.render();
