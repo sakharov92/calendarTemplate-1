@@ -4,7 +4,7 @@ import { DayCell } from "./DayCell";
 import { VacationSumCell } from "./VacationSumCell";
 
 export class TeamItem extends Component {
-  constructor(parentSelector, personData, teamName, daysInCurrentMonth, date) {
+  constructor(parentSelector, personData, teamName, daysInCurrentMonth, date, dayPersonStats) {
     // деструктуризация
     super(parentSelector, "tr");
     this.date = date;
@@ -14,6 +14,7 @@ export class TeamItem extends Component {
     this.dayCells = [];
     this.vacationSum = 0;
     this.vacationSumCell = new VacationSumCell(this.component, this.vacationSum);
+    this.dayPersonStats = dayPersonStats;
   }
 
   generateVacationSets() {
@@ -82,8 +83,13 @@ export class TeamItem extends Component {
         this.vacationFiltered,
         new Date(this.date.getFullYear(), this.date.getMonth(), index),
       );
-
       dayCell.render();
+
+      if (!dayCell.isWeekend) {
+        this.dayPersonStats[index - 1] += dayCell.vacationSum;
+      } else {
+        this.dayPersonStats[index - 1] = "weekend";
+      }
       this.vacationSum += dayCell.vacationSum;
       this.dayCells.push(dayCell);
     }
@@ -92,12 +98,13 @@ export class TeamItem extends Component {
     this.showVacationInfoText();
   }
 
-  updateTeamItem(newDate) {
+  updateTeamItem(newDate, dayPersonStats) {
     const daysInPreviousMonth = this.daysInCurrentMonth;
     // добавить функции для смены даты, дней
     this.date = newDate;
     this.vacationSum = 0;
     this.daysInCurrentMonth = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDate();
+    this.dayPersonStats = dayPersonStats;
     this.generateVacationSets();
 
     for (let index = 0; index < daysInPreviousMonth && index < this.daysInCurrentMonth; index++) {
@@ -106,6 +113,11 @@ export class TeamItem extends Component {
         new Date(this.date.getFullYear(), this.date.getMonth(), index + 1),
       );
       this.vacationSum += this.dayCells[index].vacationSum;
+      if (!this.dayCells[index].isWeekend) {
+        this.dayPersonStats[index] += this.dayCells[index].vacationSum;
+      } else {
+        this.dayPersonStats[index] = "weekend";
+      }
     }
     if (this.daysInCurrentMonth < daysInPreviousMonth) {
       const cellsToRemove = this.dayCells.splice(this.daysInCurrentMonth, daysInPreviousMonth - this.daysInCurrentMonth);
@@ -121,8 +133,13 @@ export class TeamItem extends Component {
           new Date(this.date.getFullYear(), this.date.getMonth(), index),
         );
         dayCell.render();
-        this.vacationSum += dayCell.vacationSum;
         this.dayCells.push(dayCell);
+        this.vacationSum += dayCell.vacationSum;
+        if (!this.dayCells[index - 1].isWeekend) {
+          this.dayPersonStats[index - 1] += this.dayCells[index - 1].vacationSum;
+        } else {
+          this.dayPersonStats[index - 1] = "weekend";
+        }
       }
       this.vacationSumCell.render();
     }
