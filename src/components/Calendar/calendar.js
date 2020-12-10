@@ -15,7 +15,7 @@ export class Calendar extends Component {
     this.component.classList.add("calendar");
     this.popup = new PopupWindow("#app");
     this.spinner = new Spinner(this.popup.component);
-    this.popupForm = new VacationForm(this.popup.component, this.spinner);
+    this.popupForm = new VacationForm(this.popup.component, this.spinner, this.popup);
     this.table = new Table(this.component, this.currentDate, this.popupForm);
     this.nav = new Navigation(this.component, this.currentDate, this.table);
   }
