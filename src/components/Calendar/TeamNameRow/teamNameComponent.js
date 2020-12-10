@@ -14,7 +14,9 @@ export class TeamName extends Component {
           <span>${this.depTeamInfo.members.length}</span >
           <div class="percent">
           ${this.depTeamInfo.percentageOfAbsent[this.date.getMonth()]}%</div>
-        <i class="fas chevronBtn fa-chevron-up"></i>
+        <button>
+          <i class="fas chevronBtn fa-chevron-up"></i>
+        </button>
       </div >
     </div >`;
     this.chevronBtn = this.component.querySelector(".chevronBtn");
