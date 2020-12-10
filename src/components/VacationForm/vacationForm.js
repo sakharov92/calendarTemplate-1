@@ -63,12 +63,12 @@ export class VacationForm extends PopupWindow {
         this.formFooter.appendChild(this.sendBtn);
 
         const btn = this.component.querySelector(".form__send-btn");
-
+        // const setTimeoutFunc = this.popupContext.hide.bind(this.popupContext);
         btn.addEventListener("click", function (event) {
             event.preventDefault()
             this.spinnerContext.showSpinner.call(this.spinnerContext);
             this.component.style.display = "none";
-            // setTimeout(this.popupContext.hide.bind(this.popupContext), 3000);
+            // setTimeout(`console.log("hi")`, 3000);
         }.bind(this));
     }
 
