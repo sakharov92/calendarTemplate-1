@@ -28,7 +28,7 @@ export class TeamsFooter extends Component {
   updateTeamFooter(newArray) {
     if (this.itemsToShow > newArray.length) {
       for (let index = 0; index < this.itemsToShow - newArray.length; index++) {
-        this.cells[31 - index - 1].hide();
+        this.cells[this.itemsToShow - index].hide();
         this.itemsToShow -= 1;
         for (let element = 0; element < this.itemsToShow; element++) {
           this.cells[element].updateCell(newArray[element]);
@@ -47,6 +47,7 @@ export class TeamsFooter extends Component {
         this.cells[index].updateCell(newArray[index]);
       }
     }
+    debugger
   }
 
   render() {
