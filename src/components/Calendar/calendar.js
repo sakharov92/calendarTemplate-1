@@ -6,6 +6,7 @@ import { VacationForm } from "../VacationForm";
 import "./EmployeeRow/TeamItem.css";
 import { Spinner } from "../Spinner";
 // eslint-disable-next-line import/no-unresolved
+import { Error } from "../Error";
 import "./EmployeeRow/TeamItem.css";
 
 
@@ -17,7 +18,8 @@ export class Calendar extends Component {
     this.popup = new PopupWindow("#app");
 
     this.spinner = new Spinner(this.popup.component);
-    this.popupForm = new VacationForm(this.popup.component, this.spinner, this.popup);
+    this.error = new Error (this.popup.component);
+    this.popupForm = new VacationForm(this.popup.component, this.spinner, this.popup, this.error);
 
     this.table = new Table(this.component, this.currentDate, this.popupForm);
     this.nav = new Navigation(this.component, this.currentDate, this.table);
