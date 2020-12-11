@@ -28,7 +28,14 @@ export class Team extends Component {
     const teamName = this.teamData.name.split(" ")[0].toLowerCase();
     // eslint-disable-next-line no-restricted-syntax
     for (const member of members) {
-      const item = new TeamItem(this.component, member, teamName, this.daysInCurrentMonth, this.date, this.dayPersonStats);
+      const item = new TeamItem({
+        parentSelector: this.component,
+        personData: member,
+        teamName,
+        daysInCurrentMonth: this.daysInCurrentMonth,
+        date: this.date,
+        dayPersonStats: this.dayPersonStats,
+      });
       this.dayPersonStats = item.dayPersonStats;
       this.arrayTeamItemsContext.push(item);
       item.render();

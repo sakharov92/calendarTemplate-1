@@ -93,6 +93,7 @@ export class Table extends Component {
       team.render();
       this.increaseTeamSumStats(this.teamsContext[index].dayPersonStats);
     }
+    console.log(this.teamSumStats);
     this.generateTableHead();
     super.render();
   }

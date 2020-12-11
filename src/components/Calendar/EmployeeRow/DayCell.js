@@ -1,11 +1,9 @@
 import { Component } from "../..";
 
 export class DayCell extends Component {
-  // деструктуризация
-  constructor(parentComponent, vacationFiltered, date) {
-    super(parentComponent, "td");
-    this.vacation = vacationFiltered;
-    this.date = date;
+  constructor(properties) {
+    super(properties.parentComponent, "td");
+    ({ vacationFiltered: this.vacation, date: this.date } = properties);
     this.vacationSum = 0;
   }
 
@@ -21,7 +19,6 @@ export class DayCell extends Component {
       const vacationUiStart = vacationItemEntries[0];
       const vacationUiEnd = vacationItemEntries[vacationItemEntries.length - 1];
       if (vacationItem.availableDatesList.has(cellDate)) {
-        // console.log([vacationItem.availableDatesList, cellDate]);
         if (!this.isWeekend) {
           this.increaseVacationSum();
         }
@@ -51,7 +48,6 @@ export class DayCell extends Component {
   }
 
   updateDayCell(newVacationFiltered, newDate) {
-    // добавить функции для обновления
     this.vacation = newVacationFiltered;
     this.date = newDate;
     this.vacationSum = 0;
