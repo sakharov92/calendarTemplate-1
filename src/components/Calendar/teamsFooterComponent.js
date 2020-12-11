@@ -26,7 +26,7 @@ export class TeamsFooter extends Component {
   }
 
   updateTeamFooter(newArray) {
-    let itemsFixedSum = this.itemsToShow-1;
+    const itemsFixedSum = this.itemsToShow-1;
     if (this.itemsToShow > newArray.length) {
       for (let index = 0; index < itemsFixedSum + 1 - newArray.length; index++) {
         this.cells[itemsFixedSum - index -1].hide();
