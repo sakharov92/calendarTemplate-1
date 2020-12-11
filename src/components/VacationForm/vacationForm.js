@@ -2,19 +2,23 @@ import { PopupWindow } from "../PopupWindow";
 import "./vacationForm.css";
 
 export class VacationForm extends PopupWindow {
-  constructor(parentSelector, spinnerContext) {
-    super(parentSelector);
-    this.spinnerContext = spinnerContext;
-    this.component.classList.add("form__container");
-    this.component.classList.remove(`popup__substrate`);
-  }
-
-  generateElement() {
-    this.component.innerHTML = `
+    constructor(parentSelector, spinnerContext, popupContext, errorContext) {
+        super(parentSelector);
+        this.spinnerContext = spinnerContext;
+        this.popupContext = popupContext;
+        this.errorContext = errorContext;
+        this.component.classList.add("form__container");
+        this.component.classList.remove(`popup__substrate`);
+        // this.setTimeoutFunc = function(){
+        //     this.spinnerContext.hideSpinner.bind(this.spinnerContext)
+        // }.bind(this)
+    }
+    generateElement() {
+        this.component.innerHTML = `
             <form class="form">
                 <div class="form__header">
                     <h3 class="form__title">Vacation Request</h3>
-                    <div class="form__days-counter">
+                    <div class="form__days-counter">    
                         <p class="form__days-text">days</p>
                     </div>
                 </div>
@@ -54,26 +58,26 @@ export class VacationForm extends PopupWindow {
     this.daysAmount.textContent = "8";
     this.daysCounter.prepend(this.daysAmount);
 
-    this.sendBtn = document.createElement("button");
-    this.sendBtn.classList.add("form__send-btn");
-    this.sendBtn.classList.add("form__btn");
-    // this.sendBtn.createAttribute("type", "submit");
-    this.sendBtn.textContent = "Send";
-    this.formFooter = this.component.querySelector(".form__footer");
-    this.formFooter.append(this.sendBtn);
+        this.sendBtn = document.createElement("button");
+        this.sendBtn.classList.add("form__send-btn");
+        this.sendBtn.classList.add("form__btn")
+        // this.sendBtn.createAttribute("type", "submit");
+        this.sendBtn.textContent = "Send";
+        this.formFooter = this.component.querySelector(".form__footer");
+        this.formFooter.appendChild(this.sendBtn);
 
-    const button = this.component.querySelector(".form__send-btn");
+        const btn = this.component.querySelector(".form__send-btn");
+        // const setTimeoutFunc = this.popupContext.hide.bind(this.popupContext);
+        btn.addEventListener("click", function (event) {
+            event.preventDefault()
+            this.spinnerContext.showSpinner.call(this.spinnerContext);
+            this.component.style.display = "none";
+            // setTimeout(this.setTimeoutFunc, 3000);
+        }.bind(this));
+    }
 
-    button.addEventListener(
-      "click",
-      function (event) {
-        event.preventDefault();
-        console.log(this.spinnerContext);
-        this.spinnerContext.showSpinner.call(this.spinnerContext);
-        this.component.style.display = "none";
-      }.bind(this),
-    );
-  }
+
+/*.addEventListener("click",this.spinnerContext.hideSpinner.call(this.spinnerContext))*/
 
   render() {
     this.generateElement();
