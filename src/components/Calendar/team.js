@@ -10,6 +10,7 @@ export class Team extends Component {
     this.daysInCurrentMonth = daysInCurrentMonth;
     this.arrayTeamItemsContext = [];
     this.employeeArray = [];
+    this.dayPersonStats = new Array(daysInCurrentMonth).fill(0);
   }
 
   generateTeam() {
@@ -27,7 +28,15 @@ export class Team extends Component {
     const teamName = this.teamData.name.split(" ")[0].toLowerCase();
     // eslint-disable-next-line no-restricted-syntax
     for (const member of members) {
-      const item = new TeamItem(this.component, member, teamName, this.daysInCurrentMonth, this.date);
+      const item = new TeamItem({
+        parentSelector: this.component,
+        personData: member,
+        teamName,
+        daysInCurrentMonth: this.daysInCurrentMonth,
+        date: this.date,
+        dayPersonStats: this.dayPersonStats,
+      });
+      this.dayPersonStats = item.dayPersonStats;
       this.arrayTeamItemsContext.push(item);
       item.render();
       this.employeeArray.push(item);
@@ -50,8 +59,14 @@ export class Team extends Component {
   }
 
   updateTeam(newDate) {
+    this.daysInCurrentMonth = new Date(newDate.getFullYear(), newDate.getMonth() + 1, 0).getDate();
+    this.dayPersonStats = new Array(this.daysInCurrentMonth).fill(0);
     this.teamHeaderContext.updateTeamHeader(newDate);
-    this.arrayTeamItemsContext.forEach((event) => event.updateTeamItem(newDate));
+    for (let index = 0; index < this.employeeArray.length; ++index) {
+      const employeeRow = this.employeeArray[index];
+      employeeRow.updateTeamItem(newDate, this.dayPersonStats);
+      this.employeeArray[index].dayPersonStats = employeeRow.dayPersonStats;
+    }
   }
 
   render() {

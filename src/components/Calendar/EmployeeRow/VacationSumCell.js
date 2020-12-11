@@ -2,9 +2,9 @@
 import { Component } from "../..";
 
 export class VacationSumCell extends Component {
-  constructor(parentComponent, vacationSum) {
-    super(parentComponent, "td");
-    this.vacationSum = vacationSum;
+  constructor(properties) {
+    super(properties.parentComponent, "td");
+    ({ vacationSum: this.vacationSum } = properties);
   }
 
   generateVacationSumCell() {
@@ -22,4 +22,3 @@ export class VacationSumCell extends Component {
     super.render();
   }
 }
-
