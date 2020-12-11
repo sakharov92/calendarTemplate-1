@@ -10,7 +10,6 @@ export class Error extends PopupWindow {
 
     generateElement() {
         this.component.innerHTML = `
-                        <p class="error__text" >Sorryan!!!</p>
                         <div class="test__icon"></div>
                         <p class="error__text">Something is wrong, try again! </p>
         `;
