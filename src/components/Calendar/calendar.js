@@ -32,5 +32,6 @@ export class Calendar extends Component {
     this.popup.render();
     this.popupForm.render();
     this.spinner.render();
+    this.error.render();
   }
 }

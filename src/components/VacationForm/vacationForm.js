@@ -9,13 +9,16 @@ export class VacationForm extends PopupWindow {
         this.errorContext = errorContext;
         this.component.classList.add("form__container");
         this.component.classList.remove(`popup__substrate`);
+        // this.setTimeoutFunc = function(){
+        //     this.spinnerContext.hideSpinner.bind(this.spinnerContext)
+        // }.bind(this)
     }
     generateElement() {
         this.component.innerHTML = `
             <form class="form">
                 <div class="form__header">
                     <h3 class="form__title">Vacation Request</h3>
-                    <div class="form__days-counter">
+                    <div class="form__days-counter">    
                         <p class="form__days-text">days</p>
                     </div>
                 </div>
@@ -69,7 +72,7 @@ export class VacationForm extends PopupWindow {
             event.preventDefault()
             this.spinnerContext.showSpinner.call(this.spinnerContext);
             this.component.style.display = "none";
-            setTimeout(`console.log("hi")`, 3000);
+            // setTimeout(this.setTimeoutFunc, 3000);
         }.bind(this));
     }
 

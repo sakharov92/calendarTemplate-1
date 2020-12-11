@@ -2,6 +2,7 @@ import { Component } from "..";
 import { dateFormatter } from "../../utils";
 import { departmentTeams } from "../..";
 import { Team } from "./team";
+import { TeamsFooter } from "./teamsFooterComponent";
 
 export class Table extends Component {
   constructor(parentSelector, date, popupWindowContext) {
@@ -11,9 +12,13 @@ export class Table extends Component {
     this.date = date;
     this.component.innerHTML = `<thead><tr class="outputCalendar"></tr></thead>`;
     this.daysInCurrentMonth = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    this.teamSumStats = [];
+    this.foot = {};
   }
 
   generateTableHead() {
+    this.foot = new TeamsFooter(this.component, this.teamSumStats);
+    this.foot.render();
     let outputCalendarHTML = `<td class="addVacationCell outputItem "><button class="addVacationBtn"><span>+</span>Add Vacation</button></td>`;
     const outputCalendar = this.component.querySelector(".outputCalendar");
     for (let index = 1; index <= this.daysInCurrentMonth; index++) {
@@ -60,7 +65,24 @@ export class Table extends Component {
         ? daysList[index - 1].classList.add("weekend")
         : daysList[index - 1].classList.remove("weekend");
     }
-    this.teamsContext.forEach((element) => element.updateTeam(newDate));
+    this.teamSumStats = [];
+    for (let index = 0; index < this.teamsContext.length; ++index) {
+      this.teamsContext[index].updateTeam(newDate);
+      this.increaseTeamSumStats(this.teamsContext[index].dayPersonStats);
+    }
+    this.foot.updateTeamFooter(this.teamSumStats);
+  }
+
+  increaseTeamSumStats(teamSumArray) {
+    if (this.teamSumStats.length === 0) {
+      this.teamSumStats = teamSumArray;
+    } else {
+      for (let index = 0; index < this.teamSumStats.length; ++index) {
+        if (this.teamSumStats[index] !== "weekend") {
+          this.teamSumStats[index] += teamSumArray[index];
+        }
+      }
+    }
   }
 
   render() {
@@ -69,7 +91,9 @@ export class Table extends Component {
 
       this.teamsContext.push(team);
       team.render();
+      this.increaseTeamSumStats(this.teamsContext[index].dayPersonStats);
     }
+    console.log(this.teamSumStats);
     this.generateTableHead();
     super.render();
   }

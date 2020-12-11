@@ -31,9 +31,7 @@ var PopupWindow = /** @class */ (function (_super) {
             event.preventDefault();
             this.popupSubstrate.style.display = "none";
             var popupChildren = this.popupSubstrate.childNodes;
-            console.log(popupChildren);
             var arrayPopupChildren = Array.from(popupChildren);
-            console.log(arrayPopupChildren);
             arrayPopupChildren.forEach(function (element) {
                 element.style.display = "none";
             });

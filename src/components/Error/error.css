@@ -1,4 +1,4 @@
-.error-container {
+.error__container {
     display: none;
     max-width: 393px;
     width: 100%;
@@ -6,50 +6,26 @@
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     background-color: #ffffff;
-    justify-content: center;
-    align-content: space-around;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
   }
-  .error-container__icon img {
-    margin: 0 auto;
+
+.test__icon{
+    background-image: url("stop.png");
+    width: 150px;
+    height: 150px;
+    background-size: contain;
+}
+
+  .error__icon img {
     width: 150px;
     height: 150px;
     margin-bottom: 30px;
   }
-  .error-container__title {
-    text-align: center;
-    color: #000;
-    font-size: 60px;
-    text-transform: uppercase;
-    margin-bottom: 30px;
-  }
-  .error-container__text {
+  .error__text {
     text-align: center;
     color: #000;
     font-size: 30px;
+      padding: 15px;
   }
-  
-
-
-  .form__footer{
-    width: 100%;
-    min-height: 77px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.form__btn{
-    width: 154px;
-    height: 42px;
-    border-radius: 4px;
-    border: 1px solid #d0d0d0;
-    color: #000000;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: normal;
-}
-
-.form__send-btn{
-    background-color: #48ba46;
-    color: #ffffff;
-}

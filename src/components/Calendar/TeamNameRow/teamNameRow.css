@@ -20,7 +20,7 @@ tbody tr {
   background: var(--teamHeader-bg);
 }
 
-.teamInfo__Wrapper {
+.teamInfo__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -42,6 +42,9 @@ tbody tr {
 .teamInfo__block .chevronBtn {
   font-size: 10px;
   padding: 5px;
+}
+.teamInfo__block button{
+  background-color: transparent;
 }
 .teamInfo span {
   color: #949494;

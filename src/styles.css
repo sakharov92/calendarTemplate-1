@@ -235,3 +235,4 @@ tbody:nth-child(5) .employeeКRow,
 tbody:nth-child(5) .mainRow {
   border-left: 3px solid var(--manager-color);
 }
+@import url('./components/Calendar/footer.css');
