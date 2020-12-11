@@ -32,9 +32,6 @@ export class TeamsFooter extends Component {
         this.cells[itemsFixedSum - index -1].hide();
         this.itemsToShow -= 1;
       }
-      for (let element = 0; element < newArray.length; element++) {
-        this.cells[element].updateCell(newArray[element]);
-      }
     } else if (this.itemsToShow < newArray.length) {
       for (let index = 0; index < newArray.length - itemsFixedSum + 1; index++) {
         this.cells[itemsFixedSum + index - 1].show();
@@ -43,13 +40,10 @@ export class TeamsFooter extends Component {
       if(this.itemsToShow>31){
         this.itemsToShow=31;
       }
+    }
       for (let index = 0; index < newArray.length; index++) {
         this.cells[index].updateCell(newArray[index]);
-      }
-    } else {
-      for (let index = 0; index < newArray.length; index++) {
-        this.cells[index].updateCell(newArray[index]);
-      }
+      
     }
   }
 
