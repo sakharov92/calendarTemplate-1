@@ -19,7 +19,6 @@ export class TeamsFooter extends Component {
       const cell = new FooterCell(this.component, 0);
       cell.render();
       this.cells.push(cell);
-      console.log(this.cells);
     }
     this.updateTeamFooter(this.allVacations);
     const cellSum = new FooterCell(this.component, "");
@@ -29,27 +28,29 @@ export class TeamsFooter extends Component {
   updateTeamFooter(newArray) {
     let itemsFixedSum = this.itemsToShow-1;
     if (this.itemsToShow > newArray.length) {
-      for (let index = 0; index < this.itemsToShow - newArray.length; index++) {
-        this.cells[itemsFixedSum - index].hide();
+      for (let index = 0; index < itemsFixedSum + 1 - newArray.length; index++) {
+        this.cells[itemsFixedSum - index -1].hide();
         this.itemsToShow -= 1;
       }
-      for (let element = 0; element < this.itemsToShow; element++) {
+      for (let element = 0; element < newArray.length; element++) {
         this.cells[element].updateCell(newArray[element]);
       }
     } else if (this.itemsToShow < newArray.length) {
-      for (let index = 0; index < newArray.length - this.itemsToShow; index++) {
-        this.cells[itemsFixedSum + index].show();
+      for (let index = 0; index < newArray.length - itemsFixedSum + 1; index++) {
+        this.cells[itemsFixedSum + index - 1].show();
         this.itemsToShow += 1;
       }
-      for (let index = 0; index < this.itemsToShow; index++) {
+      if(this.itemsToShow>31){
+        this.itemsToShow=31;
+      }
+      for (let index = 0; index < newArray.length; index++) {
         this.cells[index].updateCell(newArray[index]);
       }
     } else {
-      for (let index = 0; index < this.itemsToShow; index++) {
+      for (let index = 0; index < newArray.length; index++) {
         this.cells[index].updateCell(newArray[index]);
       }
     }
-    debugger
   }
 
   render() {
