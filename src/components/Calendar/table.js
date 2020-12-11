@@ -66,6 +66,7 @@ export class Table extends Component {
       this.teamsContext[index].updateTeam(newDate);
       this.increaseTeamSumStats(this.teamsContext[index].dayPersonStats);
     }
+    console.log(this.teamSumStats);
   }
 
   increaseTeamSumStats(teamSumArray) {
@@ -88,6 +89,7 @@ export class Table extends Component {
       team.render();
       this.increaseTeamSumStats(this.teamsContext[index].dayPersonStats);
     }
+    console.log(this.teamSumStats);
     this.generateTableHead();
     super.render();
   }
