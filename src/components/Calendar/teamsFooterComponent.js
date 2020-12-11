@@ -19,6 +19,7 @@ export class TeamsFooter extends Component {
       const cell = new FooterCell(this.component, 0);
       cell.render();
       this.cells.push(cell);
+      console.log(this.cells);
     }
     this.updateTeamFooter(this.allVacations);
     const cellSum = new FooterCell(this.component, "");
@@ -26,17 +27,18 @@ export class TeamsFooter extends Component {
   }
 
   updateTeamFooter(newArray) {
+    let itemsFixedSum = this.itemsToShow-1;
     if (this.itemsToShow > newArray.length) {
       for (let index = 0; index < this.itemsToShow - newArray.length; index++) {
-        this.cells[this.itemsToShow - index].hide();
+        this.cells[itemsFixedSum - index].hide();
         this.itemsToShow -= 1;
-        for (let element = 0; element < this.itemsToShow; element++) {
-          this.cells[element].updateCell(newArray[element]);
-        }
+      }
+      for (let element = 0; element < this.itemsToShow; element++) {
+        this.cells[element].updateCell(newArray[element]);
       }
     } else if (this.itemsToShow < newArray.length) {
       for (let index = 0; index < newArray.length - this.itemsToShow; index++) {
-        this.cells[this.itemsToShow + index].show();
+        this.cells[itemsFixedSum + index].show();
         this.itemsToShow += 1;
       }
       for (let index = 0; index < this.itemsToShow; index++) {
