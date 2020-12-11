@@ -20,7 +20,7 @@ tbody tr {
   background: var(--teamHeader-bg);
 }
 
-.teamInfo__Wrapper {
+.teamInfo__wrapper {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
